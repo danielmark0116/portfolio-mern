@@ -1,0 +1,38 @@
+$icon-size: 40px;
+$icon-bg-size: $icon-size * 0.66;
+
+.social_icons_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 10px auto;
+
+  .social_icon {
+    margin: 20px 10px;
+    position: relative;
+
+    .social_icon_bg {
+      position: absolute;
+      border-radius: 50%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: $icon-bg-size;
+      height: $icon-bg-size;
+      background: $white;
+      box-shadow: 0 2px 1px $shadow-color;
+      z-index: -1;
+      opacity: 0;
+    }
+
+    svg {
+      width: $icon-size;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@mixin shadow {
+  box-shadow: 0 4px 40px $shadow-color;
+}
+
+@mixin shadow-light {
+  box-shadow: 0 4px 20px $shadow-color;
+}

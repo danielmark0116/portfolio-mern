@@ -1,0 +1,86 @@
+$bg-columns-side-margin: 3vw;
+$single-strip-side-margin: 20px;
+$strips-no: 4;
+
+.background_columns {
+  position: absolute;
+  width: 70px;
+  height: 70vh;
+
+  div {
+    position: absolute;
+    width: 10px;
+  }
+}
+
+.background_column_left {
+  @extend .background_columns;
+  bottom: 0;
+  left: $bg-columns-side-margin;
+
+  div {
+    bottom: 0;
+
+    @for $i from 1 through $strips-no {
+      &:nth-of-type(#{$i}) {
+        left: $single-strip-side-margin * ($i - 1);
+      }
+    }
+
+    &:nth-of-type(1) {
+      background: $grey;
+      height: 80%;
+    }
+
+    &:nth-of-type(2) {
+      background: $light;
+      height: 100%;
+    }
+
+    &:nth-of-type(3) {
+      background: $purple;
+      height: 40%;
+    }
+
+    &:nth-of-type(4) {
+      background: $light;
+      height: 50%;
+    }
+  }
+}
+
+.background_column_right {
+  @extend .background_columns;
+  top: 0;
+  right: $bg-columns-side-margin;
+
+  div {
+    top: 0;
+
+    @for $i from 1 through $strips-no {
+      &:nth-of-type(#{$i}) {
+        right: $single-strip-side-margin * ($i - 1);
+      }
+    }
+
+    &:nth-of-type(1) {
+      background: $light;
+      height: 50%;
+    }
+
+    &:nth-of-type(2) {
+      background: $grey;
+      height: 30%;
+    }
+
+    &:nth-of-type(3) {
+      background: $blue;
+      height: 100%;
+    }
+
+    &:nth-of-type(4) {
+      background: $grey;
+      height: 80%;
+    }
+  }
+}

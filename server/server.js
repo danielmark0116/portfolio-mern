@@ -59,7 +59,7 @@ app.get(
 );
 
 if (process.env.MODE === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/test/')));
+  app.use(express.static(path.join(__dirname, '../client/public/')));
   app.use('/', (req, res) => {
     res.render('index');
   });

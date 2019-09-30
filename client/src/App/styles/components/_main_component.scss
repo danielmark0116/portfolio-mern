@@ -1,0 +1,25 @@
+main.main_container {
+  background: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 4vh 3vw;
+  width: 94vw;
+  height: 92vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+  @include shadow;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
+}

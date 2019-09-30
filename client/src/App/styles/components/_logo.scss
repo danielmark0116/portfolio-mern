@@ -1,0 +1,32 @@
+$logo-size: 250px;
+
+.logo {
+  display: block;
+  margin: 10px auto;
+  position: relative;
+
+  &_small {
+    @extend .logo;
+    width: $logo-size / 3;
+  }
+
+  &_large {
+    @extend .logo;
+    width: $logo-size;
+  }
+
+  .logo_bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    content: '';
+    width: $logo-size / 2;
+    height: $logo-size / 2;
+    background: $white;
+    @include shadow-light;
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'font';
+@import 'typography';
+
+// MIXINS
+@import 'mixins/rwd';
+@import 'mixins/shadow';
+
+// COMPONENTS
+@import 'components/main_component';
+@import 'components/background_columns';
+@import 'components/logo';
+@import 'components/social_icons';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+  max-height: 100%;
+  background: $white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.main {
+  color: $purple;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.rest {
+  color: $purple;
+}
