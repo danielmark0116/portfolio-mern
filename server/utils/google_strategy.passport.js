@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 require('dotenv').config();
 
 exports.initGoogleOAuth = function() {
@@ -17,8 +18,6 @@ exports.initGoogleOAuth = function() {
   );
 
   passport.serializeUser(function(user, done) {
-    console.log('serializers');
-    console.log(user);
     done(null, user);
   });
   passport.deserializeUser(function(userFromserializer, done) {
