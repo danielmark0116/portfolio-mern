@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 
+import Navbar from '../Navbar/Navbar';
+
 interface IProps {
   children: React.ReactChild;
   withNavbar: Boolean;
@@ -10,8 +12,9 @@ const PageWrapper = (props: IProps) => {
 
   return (
     <Fragment>
-      {withNavbar ? <h1>NAVBAR</h1> : null}
-      {children}
+      {withNavbar ? <Navbar fixed={true} fluid={true}></Navbar> : null}
+      <div style={{ marginTop: 140 }}></div>
+      <div style={{ padding: '0 30px' }}>{children}</div>
     </Fragment>
   );
 };

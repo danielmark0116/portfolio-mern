@@ -5,12 +5,15 @@
 // MIXINS
 @import 'mixins/rwd';
 @import 'mixins/shadow';
+@import 'mixins/transition';
 
 // COMPONENTS
 @import 'components/main_component';
 @import 'components/background_columns';
 @import 'components/logo';
 @import 'components/social_icons';
+@import 'components/navbar';
+@import 'components/hamburger';
 
 body {
   margin: 0;

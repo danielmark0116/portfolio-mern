@@ -1,0 +1,75 @@
+nav.navbar {
+  background: $white;
+  color: $dark;
+  font-weight: $font-light;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 20px;
+  z-index: 200;
+
+  @include phones {
+    padding: 20px 0;
+  }
+
+  &.fixed {
+    position: fixed;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+
+    li {
+      text-decoration: none;
+      margin: 0 20px;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 17px;
+      }
+    }
+  }
+
+  @include phones {
+    .desktop_menu {
+      display: none;
+    }
+  }
+
+  .mobile_menu {
+    display: none;
+
+    @include phones {
+      display: block;
+    }
+
+    ul {
+      display: none;
+      background: $white;
+      z-index: -100;
+      padding: 70px 0 10px;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: auto;
+
+      li {
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+
+        a {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
