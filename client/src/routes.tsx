@@ -5,6 +5,7 @@ import AppRoot from './App/AppRoot';
 import AdminRoot from './Admin/AdminRoot';
 
 import Home from './App/homePage/Home';
+import Contact from './App/contactPage/Contact';
 
 const AdminRoutes = () => {
   return (
@@ -32,7 +33,7 @@ const AppRoutes = () => {
           <Home></Home>
         </Route>
         <Route exact path="/contact">
-          {<p>contact page</p>}
+          <Contact></Contact>
         </Route>
         <Route path="*">
           <PageNotFound></PageNotFound>
