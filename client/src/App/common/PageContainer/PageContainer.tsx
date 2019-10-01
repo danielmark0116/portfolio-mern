@@ -12,7 +12,7 @@ const fluidStyle = {
 
 interface IProps {
   children: React.ReactChild;
-  fluid: Boolean;
+  fluid?: Boolean;
 }
 
 const PageContainer = (props: IProps) => {

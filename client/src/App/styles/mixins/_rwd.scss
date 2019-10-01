@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin tablets {
+  @media (max-width: $bp-medium) {
+    @content;
+  }
+}

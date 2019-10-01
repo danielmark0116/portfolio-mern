@@ -1,0 +1,21 @@
+.bottom_bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: $white;
+  width: 40%;
+  padding: 40px 20px;
+  display: block;
+  @include shadow;
+
+  @include tablets {
+    width: 70%;
+  }
+
+  @include phones {
+    width: 100%;
+    padding: 20px 5px;
+  }
+}

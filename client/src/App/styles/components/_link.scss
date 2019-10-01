@@ -1,0 +1,29 @@
+.link {
+  color: $dark;
+  text-decoration: none;
+  font-weight: $font-thin;
+  display: inline;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.link_active {
+    font-weight: $font-bold;
+  }
+
+  &_small {
+    @extend .link;
+    font-size: 17px;
+  }
+
+  &_large {
+    @extend .link;
+    font-size: 32px;
+
+    @include phones {
+      font-size: 24px;
+    }
+  }
+}

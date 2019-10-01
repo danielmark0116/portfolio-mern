@@ -5,6 +5,7 @@ import Title from '../common/Title/Title';
 import Logo from '../common/Logo/Logo';
 import SocialIcons from '../common/SocialIcons/SocialIcons';
 import Navbar from '../common/Navbar/Navbar';
+import BottomBar from './components/BottomBar.component';
 
 class Home extends Component<{}, {}> {
   render() {
@@ -16,8 +17,11 @@ class Home extends Component<{}, {}> {
             <Logo size={'large'}></Logo>
             <Title>Daniel Grychtoł</Title>
             <SocialIcons />
+            <BottomBar />
           </div>
         </Background>
+        <br />
+        <h2>sdf</h2>
       </Fragment>
     );
   }
