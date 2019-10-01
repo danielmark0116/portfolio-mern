@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 
 const Root = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Routes />
-  </HashRouter>
+  </BrowserRouter>
 );
 
 ReactDOM.render(<Root />, document.getElementById('root'));

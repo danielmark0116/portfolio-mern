@@ -5,10 +5,13 @@ import BackgroundColumns from '../BackgroundColumns/BackgroundColumns';
 import style from '../../styles/main.module.scss';
 
 import { backgroundMoveAnimation } from '../../animations/background';
+import { backgroundRedirect } from '../../animations/background_redirect';
 import { animateBgColumns } from '../../animations/background_columns';
 
 interface IProps {
   children: React.ReactNode;
+  animate: Boolean;
+  callback: Function;
 }
 
 export default class Background extends React.Component<IProps, {}> {
@@ -24,22 +27,33 @@ export default class Background extends React.Component<IProps, {}> {
 
   mouseMove = (e: React.MouseEvent<any>) => {
     const node = this.nodeRef.current;
-    backgroundMoveAnimation(e, node);
+    const { animate } = this.props; // value is true when home menu link is clicked
 
-    animateBgColumns(
-      [
-        this.col1Ref.current,
-        this.col2Ref.current,
-        this.col3Ref.current,
-        this.col4Ref.current,
-        this.col5Ref.current,
-        this.col6Ref.current,
-        this.col7Ref.current,
-        this.col8Ref.current
-      ],
-      e
-    );
+    if (!animate) {
+      backgroundMoveAnimation(e, node);
+
+      animateBgColumns(
+        [
+          this.col1Ref.current,
+          this.col2Ref.current,
+          this.col3Ref.current,
+          this.col4Ref.current,
+          this.col5Ref.current,
+          this.col6Ref.current,
+          this.col7Ref.current,
+          this.col8Ref.current
+        ],
+        e
+      );
+    }
   };
+
+  componentDidUpdate() {
+    const { animate, callback } = this.props;
+    const node = this.nodeRef.current;
+
+    animate && backgroundRedirect(node, () => callback());
+  }
 
   render() {
     const { children } = this.props;

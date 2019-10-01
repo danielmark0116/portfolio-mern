@@ -7,21 +7,33 @@ import FlexCenter from '../../common/FlexCenter/FlexCenter';
 
 import 'bootstrap/dist/css/bootstrap-grid.css';
 
-const BottomBar = () => {
+interface IProps {
+  action: Function;
+}
+
+const BottomBar = (props: IProps) => {
   return (
     <div>
       <BottomBarContainer>
         <Row>
           <Col>
             <FlexCenter>
-              <Link active={false} size="large">
+              <Link
+                action={() => props.action('work')}
+                active={false}
+                size="large"
+              >
                 work
               </Link>
             </FlexCenter>
           </Col>
           <Col>
             <FlexCenter>
-              <Link active={false} size="large">
+              <Link
+                action={() => props.action('about')}
+                active={false}
+                size="large"
+              >
                 about
               </Link>
             </FlexCenter>
@@ -30,6 +42,10 @@ const BottomBar = () => {
       </BottomBarContainer>
     </div>
   );
+};
+
+BottomBar.defaultProps = {
+  action: () => null
 };
 
 export default BottomBar;

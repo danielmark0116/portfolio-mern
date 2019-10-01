@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../common/Navbar/Navbar';
 
 interface IProps {
   children: React.ReactChild;
