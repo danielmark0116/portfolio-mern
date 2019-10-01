@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import AppRoot from './App/AppRoot';
 import AdminRoot from './Admin/AdminRoot';
 
+import PageWrapper from './App/common/PageWrapper/PageWrapper';
 import Home from './App/homePage/Home';
 import Contact from './App/contactPage/Contact';
 
@@ -32,12 +33,16 @@ const AppRoutes = () => {
         <Route exact path="/">
           <Home></Home>
         </Route>
-        <Route exact path="/contact">
-          <Contact></Contact>
-        </Route>
-        <Route path="*">
-          <PageNotFound></PageNotFound>
-        </Route>
+        <PageWrapper withNavbar={true}>
+          <Switch>
+            <Route exact path="/contact">
+              <Contact></Contact>
+            </Route>
+            <Route path="*">
+              <PageNotFound></PageNotFound>
+            </Route>
+          </Switch>
+        </PageWrapper>
       </Switch>
     </AppRoot>
   );
