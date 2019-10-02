@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import Background from '../common/Background/Background';
 import Title from '../common/Title/Title';
+import Text from '../common/Text/Text';
 import Logo from '../common/Logo/Logo';
 import SocialIcons from '../common/SocialIcons/SocialIcons';
 import Navbar from '../common/Navbar/Navbar';
@@ -81,7 +82,11 @@ class Home extends Component<{}, IState> {
                 <Title animate={true} fadeDelay={1.5}>
                   Daniel Grychtoł
                 </Title>
-                <SocialIcons animate={true} fadeDelay={2.5} />
+                <Text animate={true} align="center" fadeDelay={2.5}>
+                  - web developer -
+                </Text>
+                <div style={{ margin: '40px' }}></div>
+                <SocialIcons animate={true} fadeDelay={3.5} />
                 <BottomBar action={this.handleRedirect} />
               </div>
             </Background>

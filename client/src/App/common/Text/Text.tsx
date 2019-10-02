@@ -8,14 +8,14 @@ interface IProps {
   align?: 'center' | 'left' | 'right';
   animate?: Boolean;
   fadeDelay?: number;
-  isSpaced?: Boolean;
 }
 
-export default function Title(props: IProps) {
-  const { children, align, isSpaced } = props;
-
-  const spacedStyles = { textAlign: align, margin: '0 30px 80px' };
-  const nonSpacedStyles = { textAlign: align, margin: '0 30px' };
+export default function Text(props: IProps) {
+  const { children, align } = props;
+  const styles = {
+    textAlign: align,
+    margin: '0 0 10px'
+  };
 
   const titleRef = React.createRef<HTMLHeadingElement>();
 
@@ -27,17 +27,16 @@ export default function Title(props: IProps) {
 
   return (
     <Fragment>
-      <h1 ref={titleRef} style={nonSpacedStyles}>
+      <p ref={titleRef} style={styles}>
         {children}
-      </h1>
+      </p>
     </Fragment>
   );
 }
 
-Title.deafultProps = {
+Text.deafultProps = {
   children: 'Your text here...',
-  align: 'center',
+  align: 'left',
   animate: false,
-  fadeDelay: 0,
-  isSpaced: true
+  fadeDelay: 0
 };

@@ -1,123 +1,32 @@
 import React, { Component, Fragment } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 import PageContainer from '../common/PageContainer/PageContainer';
+
+import Title from '../common/Title/Title';
+import Subtitle from '../common/Subtitle/Subtitle';
+import Text from '../common/Text/Text';
 
 export default class Contact extends Component {
   render() {
     return (
       <div>
         <PageContainer>
-          <Fragment>
-            <h2>contact page</h2>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum harum
-              laboriosam repudiandae ullam dolorum nesciunt dolore ab quia
-              obcaecati, quasi sunt est ratione. Asperiores nostrum atque
-              voluptate rem cupiditate ad.
-            </p>
-          </Fragment>
+          <Container>
+            <Row>
+              <Col lg="4" md="12">
+                <Title align="right">Contact me</Title>
+              </Col>
+              <Col lg="8" md="12">
+                <Text>Call me</Text>
+                <Subtitle>967 276 456</Subtitle>
+                <Text>Email me</Text>
+                <Subtitle>mail@mail.com</Subtitle>
+                <Text>Or find me here</Text>
+                <Subtitle>mail@mail.com</Subtitle>
+              </Col>
+            </Row>
+          </Container>
         </PageContainer>
       </div>
     );
