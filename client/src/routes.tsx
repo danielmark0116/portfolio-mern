@@ -8,6 +8,7 @@ import PageLayout from './App/layout/PageLayout';
 import Home from './App/homePage/Home';
 import Contact from './App/contactPage/Contact';
 import Work from './App/workPage/Work';
+import About from './App/aboutPage/About';
 
 const AdminRoutes = () => {
   return (
@@ -36,6 +37,9 @@ const AppRoutes = () => {
         </Route>
         <Route exact path="/work">
           <Work></Work>
+        </Route>
+        <Route exact path="/about">
+          <About></About>
         </Route>
         <PageLayout withNavbar={true}>
           <Switch>

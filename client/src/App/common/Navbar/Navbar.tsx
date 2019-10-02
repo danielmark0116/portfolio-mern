@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import style from '../../styles/main.module.scss';
+
+import { fadeInUpBounce as animation } from '../../animations/fades';
 
 import PageContainer from '../PageContainer/PageContainer';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon';
@@ -45,8 +47,15 @@ const Navbar = (props: IProps) => {
   const { fluid, fixed, transparent } = props;
   const [toggleValue, toggle] = useState(false);
 
+  const navbarRef = React.createRef<HTMLElement>();
+
+  useEffect(() => {
+    animation(navbarRef.current, 0.5);
+  }, []);
+
   return (
     <nav
+      ref={navbarRef}
       className={`${style.navbar} ${fixed ? style.fixed : null}`}
       style={transparent ? { background: 'transparent' } : {}}
     >

@@ -12,6 +12,7 @@ interface IProps {
   children: React.ReactNode;
   animate: Boolean;
   callback: Function;
+  animationToggle: Boolean;
 }
 
 export default class Background extends React.Component<IProps, {}> {
@@ -27,9 +28,9 @@ export default class Background extends React.Component<IProps, {}> {
 
   mouseMove = (e: React.MouseEvent<any>) => {
     const node = this.nodeRef.current;
-    const { animate } = this.props; // value is true when home menu link is clicked
+    const { animate, animationToggle } = this.props; // value is true when home menu link is clicked
 
-    if (!animate) {
+    if (!animate && animationToggle) {
       backgroundMoveAnimation(e, node);
 
       animateBgColumns(

@@ -10,12 +10,11 @@ import BottomBar from './components/BottomBar.component';
 
 import { pageInBounce } from '../animations/whole_page_in_out';
 
-import style from '../styles/main.module.scss';
-
 interface IState {
   redirectPath: string;
   redirect: Boolean;
   animate: Boolean;
+  backgroundAnimation: Boolean;
 }
 
 class Home extends Component<{}, IState> {
@@ -27,7 +26,8 @@ class Home extends Component<{}, IState> {
     this.state = {
       redirectPath: '',
       redirect: false,
-      animate: false
+      animate: false,
+      backgroundAnimation: false
     };
   }
 
@@ -35,7 +35,11 @@ class Home extends Component<{}, IState> {
     this._isMounted = true;
     const node = this.nodeRef.current;
 
-    pageInBounce(node);
+    pageInBounce(node, () => {
+      this.setState({
+        backgroundAnimation: true
+      });
+    });
   }
 
   handleRedirect = (param: string) => {
@@ -58,7 +62,7 @@ class Home extends Component<{}, IState> {
   }
 
   render() {
-    const { animate, redirect, redirectPath } = this.state;
+    const { animate, redirect, redirectPath, backgroundAnimation } = this.state;
 
     return (
       <Fragment>
@@ -66,7 +70,11 @@ class Home extends Component<{}, IState> {
 
         <Fragment>
           <div ref={this.nodeRef}>
-            <Background callback={this.callbackFromAnimation} animate={animate}>
+            <Background
+              animationToggle={backgroundAnimation}
+              callback={this.callbackFromAnimation}
+              animate={animate}
+            >
               <Navbar fluid={true} transparent={true}></Navbar>
               <div>
                 <Logo size={'large'}></Logo>

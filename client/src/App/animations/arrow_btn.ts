@@ -1,4 +1,4 @@
-import { TweenMax, TimelineMax, Power1 } from 'gsap';
+import { TimelineMax, Power1 } from 'gsap';
 
 export const arrowBtnAnimation = (
   node1: any,

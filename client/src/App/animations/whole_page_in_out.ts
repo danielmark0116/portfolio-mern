@@ -17,10 +17,11 @@ export const pageOut = (node: any, cb: Function) => {
   });
 };
 
-export const pageInBounce = (node: any) => {
+export const pageInBounce = (node: any, cb: Function) => {
   TweenMax.from(node, 1.5, {
     y: -300,
     opacity: 0,
-    ease: Back.easeOut.config(1)
+    ease: Back.easeOut.config(1),
+    onComplete: () => cb()
   });
 };
