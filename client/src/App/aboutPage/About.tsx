@@ -48,15 +48,15 @@ export default class About extends Component<IProps, IState> {
         {redirect && <Redirect push={true} to="/" />}
         <GoBackBtn action={this.handleRedirect}>HOME</GoBackBtn>
         <div ref={this.nodeRef}>
-          <PageContainer spaced={true} fluid={true}>
-            <Row>
+          <PageContainer spaced={true} fluid={false}>
+            <div className="row" style={{ margin: '0' }}>
               <Col lg="4" md="12">
                 <Title align="right">About</Title>
               </Col>
               <Col lg="8" md="12">
                 rest
               </Col>
-            </Row>
+            </div>
           </PageContainer>
         </div>
       </Fragment>
