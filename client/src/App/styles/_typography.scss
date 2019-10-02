@@ -4,10 +4,19 @@ h1 {
   text-align: center;
   margin: 0;
   padding: 0;
+  z-index: 100 !important;
 
   @include tablets {
     text-align: center !important;
     font-size: 40px;
+  }
+
+  @include small-phones {
+    font-size: 30px;
+  }
+
+  @include small-horizontal {
+    font-size: 24px;
   }
 }
 
@@ -21,6 +30,10 @@ h2 {
 p {
   font-size: 22px;
   font-weight: $font-thin;
+
+  @include phones {
+    font-size: 18px;
+  }
 }
 
 .text_center {

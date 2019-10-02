@@ -11,6 +11,8 @@ import BottomBar from './components/BottomBar.component';
 
 import { pageInBounce } from '../animations/whole_page_in_out';
 
+import style from '../styles/main.module.scss';
+
 interface IState {
   redirectPath: string;
   redirect: Boolean;
@@ -85,8 +87,9 @@ class Home extends Component<{}, IState> {
                 <Text animate={true} align="center" fadeDelay={2.5}>
                   - web developer -
                 </Text>
-                <div style={{ margin: '40px' }}></div>
-                <SocialIcons animate={true} fadeDelay={3.5} />
+                <div className={style.icons_no_mobile}>
+                  <SocialIcons animate={true} fadeDelay={3.5} />
+                </div>
                 <BottomBar action={this.handleRedirect} />
               </div>
             </Background>

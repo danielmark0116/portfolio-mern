@@ -52,13 +52,13 @@ nav.navbar {
       z-index: -100;
       padding: 70px 0 10px;
       margin: 0;
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
-      bottom: 0;
       right: 0;
+      bottom: 0;
       width: 100%;
-      height: auto;
+      height: 74vh;
 
       li {
         text-align: center;

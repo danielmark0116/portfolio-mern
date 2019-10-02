@@ -1,6 +1,8 @@
 $bg-columns-side-margin: 3vw;
 $single-strip-side-margin: 20px;
+$single-strip-side-margin-mobile: 12px;
 $strips-no: 4;
+$mobile-height-translate: 0.5;
 
 .background_columns {
   position: absolute;
@@ -10,6 +12,10 @@ $strips-no: 4;
   div {
     position: absolute;
     width: 10px;
+
+    @include phones {
+      width: 5px;
+    }
   }
 }
 
@@ -24,27 +30,47 @@ $strips-no: 4;
     @for $i from 1 through $strips-no {
       &:nth-of-type(#{$i}) {
         left: $single-strip-side-margin * ($i - 1);
+
+        @include phones {
+          left: $single-strip-side-margin-mobile * ($i - 1);
+        }
       }
     }
 
     &:nth-of-type(1) {
       background: $grey;
       height: 80%;
+
+      @include phones {
+        height: 80% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(2) {
       background: $light;
       height: 100%;
+
+      @include phones {
+        height: 100% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(3) {
       background: $purple;
       height: 40%;
+
+      @include phones {
+        height: 70% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(4) {
       background: $light;
       height: 50%;
+
+      @include phones {
+        display: none;
+      }
     }
   }
 }
@@ -60,27 +86,47 @@ $strips-no: 4;
     @for $i from 1 through $strips-no {
       &:nth-of-type(#{$i}) {
         right: $single-strip-side-margin * ($i - 1);
+
+        @include phones {
+          right: $single-strip-side-margin-mobile * ($i - 1);
+        }
       }
     }
 
     &:nth-of-type(1) {
       background: $light;
       height: 50%;
+
+      @include phones {
+        height: 50% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(2) {
       background: $grey;
       height: 30%;
+
+      @include phones {
+        height: 30% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(3) {
       background: $blue;
       height: 100%;
+
+      @include phones {
+        height: 80% * $mobile-height-translate;
+      }
     }
 
     &:nth-of-type(4) {
       background: $grey;
       height: 80%;
+
+      @include phones {
+        display: none;
+      }
     }
   }
 }

@@ -1,3 +1,9 @@
+@mixin small-phones {
+  @media (max-width: $bp-xsmall) {
+    @content;
+  }
+}
+
 @mixin phones {
   @media (max-width: $bp-small) {
     @content;
@@ -6,6 +12,12 @@
 
 @mixin tablets {
   @media (max-width: $bp-medium) {
+    @content;
+  }
+}
+
+@mixin small-horizontal {
+  @media (max-height: $bp-small-horizontal) {
     @content;
   }
 }

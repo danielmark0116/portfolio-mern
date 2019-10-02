@@ -8,11 +8,23 @@ $logo-size: 250px;
   &_small {
     @extend .logo;
     width: $logo-size / 3;
+
+    @include phones {
+      width: $logo-size / 3 * 0.5;
+    }
   }
 
   &_large {
     @extend .logo;
     width: $logo-size;
+
+    @include phones {
+      width: $logo-size * 0.5;
+    }
+
+    @include small-horizontal {
+      width: $logo-size * 0.2;
+    }
   }
 
   .logo_bg {
@@ -28,5 +40,15 @@ $logo-size: 250px;
     background: $white;
     @include shadow-light;
     border-radius: 50%;
+
+    @include phones {
+      width: $logo-size / 2 * 0.5;
+      height: $logo-size / 2 * 0.5;
+    }
+
+    @include small-horizontal {
+      width: $logo-size / 2 * 0.2;
+      height: $logo-size / 2 * 0.2;
+    }
   }
 }

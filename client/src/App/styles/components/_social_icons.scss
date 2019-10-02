@@ -1,5 +1,17 @@
 $icon-size: 40px;
 $icon-bg-size: $icon-size * 0.66;
+$mobile-translate: 0.7;
+$small-mobile-translate: 0.8;
+
+.icons_no_mobile {
+  @include small-phones {
+    display: none;
+  }
+
+  @include small-horizontal {
+    display: none;
+  }
+}
 
 .social_icons_container {
   width: 100%;
@@ -25,10 +37,30 @@ $icon-bg-size: $icon-size * 0.66;
       box-shadow: 0 2px 1px $shadow-color;
       z-index: -1;
       opacity: 0;
+
+      @include phones {
+        width: $icon-bg-size * $mobile-translate;
+        height: $icon-bg-size * $mobile-translate;
+        bottom: 20%;
+      }
+
+      @include small-phones {
+        width: $icon-bg-size * $small-mobile-translate;
+        height: $icon-bg-size * $small-mobile-translate;
+        bottom: 20%;
+      }
     }
 
     svg {
       width: $icon-size;
+
+      @include phones {
+        width: $icon-size * $mobile-translate;
+      }
+
+      @include small-phones {
+        width: $icon-bg-size * $small-mobile-translate;
+      }
     }
 
     &:hover {
