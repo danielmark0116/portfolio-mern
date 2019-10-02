@@ -1,15 +1,35 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 import SocialIcon from '../SocialIcon/SocialIcon';
 
+import { fadeIn as animation } from '../../animations/fades';
+
 import style from '../../styles/main.module.scss';
 
-export default function SocialIcons() {
+interface IProps {
+  animate?: Boolean;
+  fadeDelay?: number;
+}
+
+export default function SocialIcons(props: IProps) {
+  const iconsRef = React.createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    const { animate, fadeDelay } = props;
+
+    animate && animation(iconsRef.current, fadeDelay);
+  }, []);
+
   return (
-    <div className={style.social_icons_container}>
+    <div ref={iconsRef} className={style.social_icons_container}>
       <SocialIcon icon="github" index={1} />
       <SocialIcon icon="linkedin" index={2} />
       <SocialIcon icon="instagram" index={3} />
     </div>
   );
 }
+
+SocialIcons.defaultProps = {
+  animate: false,
+  fadeDelay: 0
+};

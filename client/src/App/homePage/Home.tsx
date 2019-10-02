@@ -77,9 +77,11 @@ class Home extends Component<{}, IState> {
             >
               <Navbar fluid={true} transparent={true}></Navbar>
               <div>
-                <Logo size={'large'}></Logo>
-                <Title>Daniel Grychtoł</Title>
-                <SocialIcons />
+                <Logo animate={true} fadeDelay={0.5} size={'large'}></Logo>
+                <Title animate={true} fadeDelay={1.5}>
+                  Daniel Grychtoł
+                </Title>
+                <SocialIcons animate={true} fadeDelay={2.5} />
                 <BottomBar action={this.handleRedirect} />
               </div>
             </Background>

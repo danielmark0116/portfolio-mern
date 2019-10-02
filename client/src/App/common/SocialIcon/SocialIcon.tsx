@@ -23,8 +23,8 @@ export default function SocialIcon(props: IProps) {
   const iconBgRef = React.createRef<any>();
 
   useEffect(() => {
-    btnReveal(iconRef.current, 0.2, index);
-  });
+    btnReveal(iconRef.current, 1.7, index);
+  }, []);
 
   let iconToDisplay = '';
 
