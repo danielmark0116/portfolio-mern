@@ -12,6 +12,16 @@ main.main_container {
   position: relative;
   @include shadow;
 
+  @include tablets {
+    margin: 4vh 3vw 6vh;
+    height: 90vh;
+  }
+
+  @include phones {
+    margin: 4vh 3vw 0;
+    height: 75vh;
+  }
+
   p,
   h1,
   h2,

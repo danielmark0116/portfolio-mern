@@ -7,6 +7,7 @@ import AdminRoot from './Admin/AdminRoot';
 import PageLayout from './App/layout/PageLayout';
 import Home from './App/homePage/Home';
 import Contact from './App/contactPage/Contact';
+import Work from './App/workPage/Work';
 
 const AdminRoutes = () => {
   return (
@@ -32,6 +33,9 @@ const AppRoutes = () => {
       <Switch>
         <Route exact path="/">
           <Home></Home>
+        </Route>
+        <Route exact path="/work">
+          <Work></Work>
         </Route>
         <PageLayout withNavbar={true}>
           <Switch>

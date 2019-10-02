@@ -13,19 +13,24 @@ const fluidStyle = {
 interface IProps {
   children: React.ReactChild;
   fluid?: Boolean;
+  spaced: Boolean;
 }
 
 const PageContainer = (props: IProps) => {
-  const { children, fluid } = props;
+  const { children, fluid, spaced } = props;
   return (
-    <div className={style.page_container} style={fluid ? fluidStyle : maxWidth}>
+    <div
+      className={`${style.page_container} ${spaced ? style.spaced : ''}`}
+      style={fluid ? fluidStyle : maxWidth}
+    >
       {children}
     </div>
   );
 };
 
 PageContainer.defaultProps = {
-  fluid: false
+  fluid: false,
+  spaced: false
 };
 
 export default PageContainer;

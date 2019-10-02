@@ -3,17 +3,23 @@ import { Fragment } from 'react';
 
 interface IProps {
   children?: React.ReactNode;
+  align?: 'center' | 'left' | 'right';
 }
 
 export default function Title(props: IProps) {
-  const { children } = props;
+  const { children, align } = props;
+  const alignStyles = {
+    textAlign: align
+  };
+
   return (
     <Fragment>
-      <h1>{children}</h1>
+      <h1 style={alignStyles}>{children}</h1>
     </Fragment>
   );
 }
 
 Title.deafultProps = {
-  children: 'Your text here...'
+  children: 'Your text here...',
+  align: 'center'
 };

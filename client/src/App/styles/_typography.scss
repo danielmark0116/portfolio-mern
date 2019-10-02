@@ -2,6 +2,12 @@ h1 {
   font-size: 54px;
   text-transform: uppercase;
   text-align: center;
+  margin: 0;
+  padding: 0;
+
+  @include tablets {
+    text-align: center !important;
+  }
 }
 
 .text_center {

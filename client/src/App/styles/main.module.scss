@@ -1,11 +1,12 @@
-@import 'variables';
-@import 'font';
-@import 'typography';
-
 // MIXINS
 @import 'mixins/rwd';
 @import 'mixins/shadow';
 @import 'mixins/transition';
+
+// VARS
+@import 'variables';
+@import 'font';
+@import 'typography';
 
 // COMPONENTS
 @import 'components/locked_component';
@@ -17,6 +18,8 @@
 @import 'components/hamburger';
 @import 'components/link';
 @import 'components/bottom_bar';
+@import 'components/go_back_btn';
+@import 'components/arrow_btn';
 
 body {
   margin: 0;
