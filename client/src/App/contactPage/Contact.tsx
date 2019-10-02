@@ -12,21 +12,19 @@ export default class Contact extends Component {
     return (
       <div>
         <PageContainer>
-          <Container>
-            <Row>
-              <Col lg="4" md="12">
-                <Title align="right">Contact me</Title>
-              </Col>
-              <Col lg="8" md="12">
-                <Text>Call me</Text>
-                <Subtitle>967 276 456</Subtitle>
-                <Text>Email me</Text>
-                <Subtitle>mail@mail.com</Subtitle>
-                <Text>Or find me here</Text>
-                <Subtitle>mail@mail.com</Subtitle>
-              </Col>
-            </Row>
-          </Container>
+          <Row>
+            <Col lg="4" md="12">
+              <Title align="right">Contact me</Title>
+            </Col>
+            <Col lg="8" md="12">
+              <Text>Call me</Text>
+              <Subtitle>967 276 456</Subtitle>
+              <Text>Email me</Text>
+              <Subtitle>mail@mail.com</Subtitle>
+              <Text>Or find me here</Text>
+              <Subtitle>mail@mail.com</Subtitle>
+            </Col>
+          </Row>
         </PageContainer>
       </div>
     );

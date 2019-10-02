@@ -8,6 +8,14 @@
     position: relative;
     width: 30px;
 
+    @include phones {
+      width: 15px;
+
+      svg {
+        width: 15px;
+      }
+    }
+
     div {
       position: absolute;
       right: 0;
@@ -18,6 +26,16 @@
 
       &:nth-child(2) {
         top: -7px;
+      }
+
+      @include phones {
+        &:first-child {
+          top: -14px;
+        }
+
+        &:nth-child(2) {
+          top: -6px;
+        }
       }
     }
   }

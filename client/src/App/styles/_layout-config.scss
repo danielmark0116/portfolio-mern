@@ -1,0 +1,7 @@
+.spaced_container {
+  margin-top: 140px;
+
+  @include phones {
+    margin-top: 80px;
+  }
+}

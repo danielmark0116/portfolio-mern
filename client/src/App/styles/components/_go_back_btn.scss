@@ -12,6 +12,12 @@ $go_back_btn_position: 40px;
   text-transform: uppercase;
   @include transition;
 
+  @include phones {
+    font-size: 18px;
+    top: $go_back_btn_position * 0.25;
+    right: $go_back_btn_position * 3 * 0.25;
+  }
+
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -24,4 +30,8 @@ $go_back_btn_position: 40px;
   width: auto;
   height: 50px;
   padding-left: 20px;
+
+  @include phones {
+    padding-left: 5px;
+  }
 }

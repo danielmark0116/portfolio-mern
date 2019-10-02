@@ -15,7 +15,7 @@ export default function Title(props: IProps) {
   const { children, align, isSpaced } = props;
 
   const spacedStyles = { textAlign: align, margin: '0 30px 80px' };
-  const nonSpacedStyles = { textAlign: align, margin: '0 30px' };
+  const nonSpacedStyles = { textAlign: align, margin: '0 30px 20px' };
 
   const titleRef = React.createRef<HTMLHeadingElement>();
 
