@@ -20,6 +20,6 @@ ReactDOM.render(<Root />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-Cookie.set('test', 'test value');
+// Cookie.set('test', 'test value');
 
-console.log(Cookie.get('test'));
+// console.log(Cookie.get('test'));
