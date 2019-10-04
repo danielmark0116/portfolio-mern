@@ -8,6 +8,7 @@ import PageLayout from './App/layout/PageLayout';
 import Home from './App/homePage/Home';
 import Contact from './App/contactPage/Contact';
 import Work from './App/workPage/Work';
+import Work2 from './App/workPage/Work2';
 import About from './App/aboutPage/About';
 
 const AdminRoutes = () => {
@@ -34,6 +35,9 @@ const AppRoutes = () => {
       <Switch>
         <Route exact path="/">
           <Home></Home>
+        </Route>
+        <Route exact path="/work/:id">
+          <Work2></Work2>
         </Route>
         <Route exact path="/work">
           <Work></Work>

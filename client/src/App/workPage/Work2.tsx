@@ -13,31 +13,20 @@ const Work = () => {
   const node = React.createRef<HTMLDivElement>();
 
   useEffect(() => {
-    // pageIn(node.current);
+    pageIn(node.current);
   }, []);
 
   return (
     <div>
-      {/* <div ref={node} className={style.transition_box}></div> */}
+      <div ref={node} className={style.transition_box}></div>
       <PageSecondaryLayout
-        goBackBtnText="home"
+        goBackBtnText="back"
         pageTitle="my work"
-        redirectPath="/"
+        redirectPath="/work"
       >
         <FlexGrid>
           <Fragment>
-            <FlexItem>
-              <PresBox index={1}></PresBox>
-            </FlexItem>
-            <FlexItem>
-              <PresBox index={2}></PresBox>
-            </FlexItem>
-            <FlexItem>
-              <PresBox index={3}></PresBox>
-            </FlexItem>
-            <FlexItem>
-              <PresBox index={4}></PresBox>
-            </FlexItem>
+            <FlexItem>podstorna</FlexItem>
           </Fragment>
         </FlexGrid>
       </PageSecondaryLayout>
