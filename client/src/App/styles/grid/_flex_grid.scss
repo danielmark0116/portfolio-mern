@@ -1,0 +1,15 @@
+.flex_grid {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .flex_item {
+    flex: 1 0 49%;
+
+    @include tablets {
+      flex: 1 0 100%;
+    }
+  }
+}
