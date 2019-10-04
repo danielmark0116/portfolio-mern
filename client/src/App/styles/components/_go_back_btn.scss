@@ -10,7 +10,13 @@ $go_back_btn_position: 40px;
   font-size: 27px;
   font-weight: $font-thin;
   text-transform: uppercase;
+  padding: 4px 15px 0;
+  border-radius: 5px;
   @include transition;
+
+  @include hover-supported {
+    padding: 15px 20px 5px;
+  }
 
   @include phones {
     font-size: 18px;
