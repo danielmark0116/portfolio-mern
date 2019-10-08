@@ -19,6 +19,9 @@ router.get(
   passport.authenticate('google', { failureRedirect: '/auth/google/failure' }),
   function(req, res) {
     authController.login(req.user, (err, newUserData, token) => {
+      // change res to redirect to route with token param
+      // if development -> localhost with front end
+      // if production -> endpoint on the same localhost
       res.json({
         token: token,
         userData: newUserData,
