@@ -1,0 +1,11 @@
+@import 'font';
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a {
+  color: rgb(6, 8, 124);
+  text-decoration: none;
+  font-weight: $font-light;
+}

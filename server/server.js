@@ -34,7 +34,7 @@ const projectRoutes = require('./routes/project.routes');
 const authRoutes = require('./routes/auth.routes');
 
 app.use('/api', projectRoutes);
-app.use('/', authRoutes);
+app.use('/api/auth', authRoutes);
 app.get(
   '/secret',
   passport.authenticate('jwt', { session: false }),
