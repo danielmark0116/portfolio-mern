@@ -7,6 +7,8 @@ import { store } from './store/index';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 
+import { generalsGetAllThunk } from './actions/generalsActions';
+
 const Root = () => (
   <BrowserRouter>
     <Routes />
@@ -19,6 +21,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+store.dispatch(generalsGetAllThunk());
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

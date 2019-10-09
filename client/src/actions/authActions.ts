@@ -92,6 +92,8 @@ export const authLoginThunk = (googleResponseData: googleResponseData) => {
 
       const { googleId, email, name, photo, admin } = data.user;
 
+      authLoginCheckThunk();
+
       dispatch(authLoginSuccess({ email, name, googleId, photo }, admin));
       dispatch(requestSuccess());
     } catch (err) {

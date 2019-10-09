@@ -1,15 +1,10 @@
 import { userData } from '../types/userData';
+import { generalsData } from '../types/generalsData';
 
 // REQUEST
 export const REQUEST_START = 'REQUEST_START';
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
 export const REQUEST_FAIL = 'REQUEST_FAIL';
-
-// AUTH
-export const AUTH_CHECK = 'AUTH_CHECK';
-export const AUTH_LOGIN = 'AUTH_LOGIN';
-export const AUTH_LOGIN_SUCCESS = 'AUTH_LOGIN_SUCCESS';
-export const AUTH_LOGIN_FAIL = 'AUTH_LOGIN_FAIL';
 
 interface requestStartActionType {
   type: typeof REQUEST_START;
@@ -24,6 +19,12 @@ interface requestFailActionType {
   type: typeof REQUEST_FAIL;
   payload: string;
 }
+
+// AUTH
+export const AUTH_CHECK = 'AUTH_CHECK';
+export const AUTH_LOGIN = 'AUTH_LOGIN';
+export const AUTH_LOGIN_SUCCESS = 'AUTH_LOGIN_SUCCESS';
+export const AUTH_LOGIN_FAIL = 'AUTH_LOGIN_FAIL';
 
 interface authCheckActionType {
   type: typeof AUTH_CHECK;
@@ -45,6 +46,24 @@ interface authLoginFailActionType {
   type: typeof AUTH_LOGIN_FAIL;
 }
 
+// GENERALS
+export const GENERALS_GET_ALL = 'GENERALS_GET_ALL';
+export const GENERALS_GET_ALL_SUCCESS = 'GENERALS_GET_ALL_SUCCESS';
+export const GENERALS_UPDATE = 'GENERALS_UPDATE';
+
+interface generalsGetAllActionType {
+  type: typeof GENERALS_GET_ALL;
+}
+
+interface generalsGetAllSuccessActionType {
+  type: typeof GENERALS_GET_ALL_SUCCESS;
+  payload: generalsData;
+}
+
+interface generalsUpdateActionType {
+  type: typeof GENERALS_UPDATE;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -52,4 +71,7 @@ export type ActionTypes =
   | authLoginFailActionType
   | requestStartActionType
   | requestSuccessActionType
-  | requestFailActionType;
+  | requestFailActionType
+  | generalsGetAllActionType
+  | generalsGetAllSuccessActionType
+  | generalsUpdateActionType;

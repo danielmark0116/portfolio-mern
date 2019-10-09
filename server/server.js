@@ -10,6 +10,10 @@ const helmet = require('helmet');
 // DB
 const db = require('./utils/dbConnection');
 
+// GENERAL COLLECTION POPULATE IF EMPTY
+const generalPopulate = require('./utils/generalsPopulate');
+generalPopulate.populate();
+
 //  PASSPORT
 const passport = require('passport');
 const googleOAuthSettings = require('./utils/google_strategy.passport');
@@ -32,9 +36,11 @@ jwtStrategySetting.initJwtStrategy();
 // ROUTES
 const projectRoutes = require('./routes/project.routes');
 const authRoutes = require('./routes/auth.routes');
+const generalRoutes = require('./routes/general.routes');
 
 app.use('/api', projectRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/general', generalRoutes);
 app.get(
   '/secret',
   passport.authenticate('jwt', { session: false }),

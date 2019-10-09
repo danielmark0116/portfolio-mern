@@ -1,39 +1,46 @@
+const express = require('express');
 const User = require('../model/user.model');
+
 const jwt = require('jsonwebtoken');
+
 require('dotenv').config();
 
-exports.login = async function(userData, cb) {
-  const googleId = userData.id;
-  const name = userData.displayName;
-  const email = userData.emails[0].value;
-  const photo = userData.photos[0].value;
+// FROM REACT_GOOGLE
+exports.loginUser = async (req, res) => {
+  const googleId = req.body.googleId;
+  const tokenValidMinutes = 60;
 
   try {
     const user = await User.findOne({ googleId });
 
     if (!user) {
-      const newUser = new User({
-        googleId,
-        email,
-        name,
-        photo
-      });
+      const newUser = new User(req.body);
 
       newUser.save().then(user => {
         const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-          expiresIn: 60 * 60
+          expiresIn: 60 * tokenValidMinutes
         });
 
-        cb(null, user, token);
+        res.json({
+          user,
+          token
+        });
       });
     } else {
       const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-        expiresIn: 60 * 60
+        expiresIn: 60 * tokenValidMinutes
       });
 
-      cb(null, user, token);
+      res.json({
+        user: user,
+        token
+      });
     }
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      error: true,
+      success: false,
+      errorMsg: err.message
+    });
   }
 };
