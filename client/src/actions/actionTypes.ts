@@ -1,5 +1,5 @@
 import { userData } from '../types/userData';
-import { generalsData } from '../types/generalsData';
+import { generalsData, generalsDataElements } from '../types/generalsData';
 
 // REQUEST
 export const REQUEST_START = 'REQUEST_START';
@@ -50,6 +50,7 @@ interface authLoginFailActionType {
 export const GENERALS_GET_ALL = 'GENERALS_GET_ALL';
 export const GENERALS_GET_ALL_SUCCESS = 'GENERALS_GET_ALL_SUCCESS';
 export const GENERALS_UPDATE = 'GENERALS_UPDATE';
+export const GENERALS_UPDATE_SUCCESS = 'GENERALS_UPDATE_SUCCESS';
 
 interface generalsGetAllActionType {
   type: typeof GENERALS_GET_ALL;
@@ -64,6 +65,11 @@ interface generalsUpdateActionType {
   type: typeof GENERALS_UPDATE;
 }
 
+interface generalsUpdateSuccessActionType {
+  type: typeof GENERALS_UPDATE_SUCCESS;
+  payload: generalsData;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -74,4 +80,5 @@ export type ActionTypes =
   | requestFailActionType
   | generalsGetAllActionType
   | generalsGetAllSuccessActionType
-  | generalsUpdateActionType;
+  | generalsUpdateActionType
+  | generalsUpdateSuccessActionType;

@@ -1,8 +1,17 @@
 import * as types from './actionTypes';
 import { ActionTypes } from './actionTypes';
-import { generalsData } from '../types/generalsData';
+import { generalsData, generalsDataElements } from '../types/generalsData';
 import { Dispatch } from 'redux';
 import axios from 'axios';
+
+import { fetchToken } from '../utils/fetchToken';
+import { formatResponse } from '../utils/generalsData';
+
+let token = fetchToken();
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+function updateToken(): void {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${fetchToken()}`;
+}
 
 // ACTIONS
 export const generalsGetAll = (): ActionTypes => ({
@@ -11,6 +20,15 @@ export const generalsGetAll = (): ActionTypes => ({
 
 export const generalsGetAllSuccess = (payload: generalsData): ActionTypes => ({
   type: types.GENERALS_GET_ALL_SUCCESS,
+  payload
+});
+
+export const generalsUpdate = (): ActionTypes => ({
+  type: types.GENERALS_UPDATE
+});
+
+export const generalsUpdateSuccess = (payload: generalsData): ActionTypes => ({
+  type: types.GENERALS_UPDATE_SUCCESS,
   payload
 });
 
@@ -38,30 +56,26 @@ export const generalsGetAllThunk = () => {
       let response = await axios.get('/general');
       let data = response.data.generals;
 
-      const {
-        nameId,
-        githubLink,
-        instagramLink,
-        linkedInLink,
-        subtitle,
-        about,
-        email,
-        phone
-      } = data;
+      dispatch(generalsGetAllSuccess(formatResponse(data)));
 
-      dispatch(
-        generalsGetAllSuccess({
-          nameId,
-          githubLink,
-          instagramLink,
-          linkedInLink,
-          subtitle,
-          about,
-          email,
-          phone
-        })
-      );
+      dispatch(requestSuccess());
+    } catch (err) {
+      dispatch(requestFail(err.message));
+    }
+  };
+};
 
+export const generalsUpdateThunk = (data: generalsDataElements) => {
+  return async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch(generalsUpdate());
+    dispatch(requestStart());
+    updateToken();
+
+    try {
+      let response = await axios.put('/general', data);
+      let resData = await response.data.response;
+
+      dispatch(generalsUpdateSuccess(formatResponse(resData)));
       dispatch(requestSuccess());
     } catch (err) {
       dispatch(requestFail(err.message));

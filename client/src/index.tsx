@@ -7,7 +7,10 @@ import { store } from './store/index';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 
-import { generalsGetAllThunk } from './actions/generalsActions';
+import {
+  generalsGetAllThunk,
+  generalsUpdateThunk
+} from './actions/generalsActions';
 
 const Root = () => (
   <BrowserRouter>

@@ -1,0 +1,39 @@
+$dark: rgba(black, 0.05);
+
+.text_input_container {
+  width: 100%;
+  padding: 5px;
+  box-shadow: 0 8px 10px $dark;
+  border: 1px solid $dark;
+  margin: 10px 0;
+
+  .text_input {
+    padding: 3px;
+
+    input {
+      width: 100%;
+      border: none;
+      font-size: 18px;
+      font-family: inherit;
+      font-weight: 300;
+      padding: 15px;
+      background: transparent;
+
+      &:focus {
+        outline-color: $dark;
+        outline-width: 1px;
+      }
+    }
+  }
+
+  .text_input_medium_container {
+    font-weight: 300;
+    font-size: 18px;
+    @extend .text_input;
+
+    .text_input_medium {
+      @extend input;
+      font-size: inherit;
+    }
+  }
+}

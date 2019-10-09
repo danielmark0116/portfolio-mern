@@ -1,0 +1,21 @@
+$btn_sizing: 30px;
+
+.action_btn {
+  width: $btn_sizing;
+  height: $btn_sizing;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}

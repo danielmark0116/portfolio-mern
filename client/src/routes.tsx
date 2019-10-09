@@ -2,7 +2,9 @@ import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AppRoot from './App/AppRoot';
+
 import AdminRoot from './Admin/AdminRoot';
+import AdminHome from './Admin/pages/Home';
 
 import PageLayout from './App/layout/PageLayout';
 import Home from './App/homePage/Home';
@@ -16,7 +18,7 @@ const AdminRoutes = () => {
     <AdminRoot>
       <Switch>
         <Route exact path="/admin">
-          {<p>ADMIN home page</p>}
+          <AdminHome></AdminHome>
         </Route>
         <Route exact path="/admin/contact">
           {<p>ADMIN contact page</p>}
@@ -61,7 +63,7 @@ const AppRoutes = () => {
 };
 
 const PageNotFound = () => {
-  return <div>page not found</div>;
+  return <h1>page not found</h1>;
 };
 
 const Routes = () => {

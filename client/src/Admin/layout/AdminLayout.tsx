@@ -1,32 +1,27 @@
 import React from 'react';
-import LogoutBox from '../features/LogoutBox/LogoutBox';
+import Navbar from '../features/Navbar/Navbar';
+import PageContainer from '../common/PageContainer/PageContainer';
 
 interface IProps {
   children: React.ReactChild;
 }
 
+const links = [
+  {
+    path: '/admin',
+    title: 'home'
+  },
+  {
+    path: '/admin/projects',
+    title: 'projects'
+  }
+];
+
 const AdminLayout = (props: IProps) => {
   return (
     <div>
-      <nav
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: 10
-        }}
-      >
-        <div>navbar</div>
-        <div>
-          <LogoutBox></LogoutBox>
-        </div>
-      </nav>
-      <br />
-      <br />
-      {props.children}
-      <br />
-      <br />
-      footer
+      <Navbar links={links} />
+      <PageContainer>{props.children}</PageContainer>
     </div>
   );
 };

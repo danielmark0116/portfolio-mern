@@ -53,15 +53,7 @@ class AdminRoot extends Component<Props, {}> {
       );
 
     if (isAdmin && loggedIn)
-      return (
-        <div>
-          {this.props.loggedIn ? (
-            <AdminLayout>{this.props.children}</AdminLayout>
-          ) : (
-            <LoginBox handleLogin={this.handleResponse}></LoginBox>
-          )}
-        </div>
-      );
+      return <AdminLayout>{this.props.children}</AdminLayout>;
   }
 }
 

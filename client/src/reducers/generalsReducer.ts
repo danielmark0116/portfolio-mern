@@ -1,10 +1,18 @@
 import * as types from '../actions/actionTypes';
 import { ActionTypes } from '../actions/actionTypes';
-import { generalsData } from '../types/generalsData';
+import { generalsData, generalsDataLinks } from '../types/generalsData';
 import { requestData } from '../types/requestData';
+import { AppState } from '../store';
 
 // SELECTORS
-export const test = (): null => null;
+export const selectorGeneralsLinks = (state: AppState): generalsDataLinks => {
+  const links: generalsDataLinks = {
+    instagramLink: state.generals.generalsData.instagramLink,
+    githubLink: state.generals.generalsData.githubLink,
+    linkedInLink: state.generals.generalsData.linkedInLink
+  };
+  return links;
+};
 
 // GENERALS REDUCER
 interface initState {
@@ -40,6 +48,8 @@ export function generalsReducer(
     case types.GENERALS_GET_ALL:
       return state;
     case types.GENERALS_GET_ALL_SUCCESS:
+      return { ...state, generalsData: action.payload };
+    case types.GENERALS_UPDATE_SUCCESS:
       return { ...state, generalsData: action.payload };
     case types.REQUEST_START:
       return {
