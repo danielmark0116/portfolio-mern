@@ -14,10 +14,11 @@ import style from '../../styles/main.module.scss';
 interface IProps {
   icon: 'instagram' | 'linkedin' | 'github';
   index: number;
+  action: Function;
 }
 
 export default function SocialIcon(props: IProps) {
-  const { icon, index } = props;
+  const { icon, index, action } = props;
 
   const iconRef = React.createRef<any>();
   const iconBgRef = React.createRef<any>();
@@ -45,6 +46,7 @@ export default function SocialIcon(props: IProps) {
   return (
     <div
       ref={iconRef}
+      onClick={() => action()}
       className={style.social_icon}
       onMouseEnter={() => {
         btnHover(iconRef.current, iconBgRef.current);
@@ -60,5 +62,6 @@ export default function SocialIcon(props: IProps) {
 }
 
 SocialIcon.defaultProps = {
-  index: 1
+  index: 1,
+  action: () => null
 };

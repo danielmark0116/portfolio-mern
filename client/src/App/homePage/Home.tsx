@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 import Background from '../common/Background/Background';
 import Title from '../common/Title/Title';
-import Text from '../common/Text/Text';
 import Logo from '../common/Logo/Logo';
-import SocialIcons from '../common/SocialIcons/SocialIcons';
+import SocialIcons from '../common/SocialIcons/SocialIconsContainer';
 import Navbar from '../common/Navbar/Navbar';
 import BottomBar from './components/BottomBar.component';
+import Subtitle from './components/SubtitleContainer';
 
 import { pageInBounce } from '../animations/whole_page_in_out';
 
@@ -84,9 +84,7 @@ class Home extends Component<{}, IState> {
                 <Title animate={true} fadeDelay={1.5}>
                   Daniel Grychtoł
                 </Title>
-                <Text animate={true} align="center" fadeDelay={2.5}>
-                  - web developer -
-                </Text>
+                <Subtitle></Subtitle>
                 <div className={style.icons_no_mobile}>
                   <SocialIcons animate={true} fadeDelay={3.5} />
                 </div>

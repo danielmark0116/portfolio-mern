@@ -3,14 +3,16 @@ import React from 'react';
 import style from '../../styles/main.module.scss';
 
 interface IProps {
-  children: string;
+  children: string | React.ReactChild;
   active: Boolean;
   size: 'small' | 'large';
   action: Function;
+  color: 'blue' | 'purple' | 'dark';
 }
 
 const Link = (props: IProps) => {
-  const { children, active, size, action } = props;
+  const { children, active, size, action, color } = props;
+
   return (
     <div
       onClick={() => {
@@ -22,7 +24,13 @@ const Link = (props: IProps) => {
           : size === 'large'
           ? style.link_large
           : ''
-      } ${active ? style.link_active : ''}`}
+      } ${active ? style.link_active : ''} ${
+        color === 'blue'
+          ? style.link_blue
+          : color === 'purple'
+          ? style.link_purple
+          : ''
+      }`}
     >
       {children}
     </div>
@@ -30,7 +38,9 @@ const Link = (props: IProps) => {
 };
 
 Link.defaultProps = {
-  action: () => null
+  action: () => null,
+  active: false,
+  color: 'dark'
 };
 
 export default Link;

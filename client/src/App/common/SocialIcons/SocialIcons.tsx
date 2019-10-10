@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import SocialIcon from '../SocialIcon/SocialIcon';
 
+import { stateToProps } from './SocialIconsContainer';
+
 import { fadeIn as animation } from '../../animations/fades';
 
 import style from '../../styles/main.module.scss';
@@ -11,8 +13,12 @@ interface IProps {
   fadeDelay?: number;
 }
 
-export default function SocialIcons(props: IProps) {
+type Props = IProps & stateToProps;
+
+export default function SocialIcons(props: Props) {
   const iconsRef = React.createRef<HTMLDivElement>();
+
+  const { links } = props;
 
   useEffect(() => {
     const { animate, fadeDelay } = props;
@@ -22,9 +28,21 @@ export default function SocialIcons(props: IProps) {
 
   return (
     <div ref={iconsRef} className={style.social_icons_container}>
-      <SocialIcon icon="github" index={1} />
-      <SocialIcon icon="linkedin" index={2} />
-      <SocialIcon icon="instagram" index={3} />
+      <SocialIcon
+        icon="github"
+        index={1}
+        action={() => window.open(links.githubLink, '_blank')}
+      />
+      <SocialIcon
+        icon="linkedin"
+        index={2}
+        action={() => window.open(links.linkedInLink, '_blank')}
+      />
+      <SocialIcon
+        icon="instagram"
+        index={3}
+        action={() => window.open(links.instagramLink, '_blank')}
+      />
     </div>
   );
 }

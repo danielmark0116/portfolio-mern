@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PageSecondaryLayout from '../layout/PageSecondaryLayout';
+import AboutComponent from './components/AboutContainer';
 
 const About = () => {
   return (
@@ -10,7 +11,7 @@ const About = () => {
         pageTitle="about"
         redirectPath="/"
       >
-        <div>test</div>
+        <AboutComponent></AboutComponent>
       </PageSecondaryLayout>
     </div>
   );
