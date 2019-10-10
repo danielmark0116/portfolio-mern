@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+
 import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
 
 import style from './form.module.scss';
 
@@ -53,6 +55,7 @@ class Form extends Component<IProps, IState> {
     return (
       <Fragment>
         <form
+          className={style.form}
           onSubmit={e => {
             e.preventDefault();
             this.handleSubmit();
@@ -72,22 +75,10 @@ class Form extends Component<IProps, IState> {
             </div>
           ))}
         </form>
-        <button
-          onClick={e => {
-            e.preventDefault();
-            this.handleSubmit();
-          }}
-        >
-          submit
-        </button>
-        <button
-          onClick={e => {
-            e.preventDefault();
-            this.handleCancel();
-          }}
-        >
+        <Button action={this.handleSubmit}>submit</Button>
+        <Button type="secondary" action={this.handleCancel}>
           cancel
-        </button>
+        </Button>
       </Fragment>
     );
   }

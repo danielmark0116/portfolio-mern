@@ -7,6 +7,10 @@ $dark: rgba(black, 0.05);
   border: 1px solid $dark;
   margin: 10px 0 40px;
 
+  &:last-child {
+    margin-bottom: 10px;
+  }
+
   .text_input {
     padding: 3px;
 

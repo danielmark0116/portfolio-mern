@@ -1,0 +1,27 @@
+.admin_button {
+  padding: 15px 25px;
+  margin: 0 5px 0 0;
+  border: none;
+  box-shadow: 0 2px 5px rgba(black, 0.2);
+  font-size: 18px;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-family: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &_primary {
+    @extend .admin_button;
+    background: white;
+    color: black;
+  }
+
+  &_secondary {
+    @extend .admin_button;
+    font-weight: 300;
+    background: black;
+    color: white;
+  }
+}
