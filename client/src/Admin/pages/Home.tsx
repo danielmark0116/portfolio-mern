@@ -12,14 +12,17 @@ export default class Home extends Component {
     return (
       <Fragment>
         <LinksUpdate></LinksUpdate>
-        <hr />
         <SizedBox space={40} />
+        <hr />
+        <SizedBox space={80} />
         <ContactUpdate></ContactUpdate>
-        <hr />
         <SizedBox space={40} />
+        <hr />
+        <SizedBox space={80} />
         <Title>Other</Title>
         <SubtitleUpdate></SubtitleUpdate>
         <AboutUpdate></AboutUpdate>
+        <SizedBox space={80} />
         <hr />
         <SizedBox space={80} />
       </Fragment>

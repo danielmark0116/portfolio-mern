@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(black, 0.1);
 
   ul {
     display: flex;
@@ -20,6 +21,7 @@
       a {
         color: inherit;
         text-transform: uppercase;
+        padding: 10px;
       }
     }
   }
