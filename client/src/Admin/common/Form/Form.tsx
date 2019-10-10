@@ -1,13 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import TextInput from '../TextInput/TextInput';
 
+import style from './form.module.scss';
+
 interface IProps {
   inputs: {
     fieldName: string;
+    label: string;
     initValue: string;
     extended: Boolean;
   }[];
   submitAction: Function;
+  cancelAction: Function;
 }
 
 interface IState {
@@ -40,7 +44,7 @@ class Form extends Component<IProps, IState> {
   };
 
   handleCancel = () => {
-    console.log('cancelled form');
+    this.props.cancelAction();
   };
 
   render() {
@@ -55,13 +59,17 @@ class Form extends Component<IProps, IState> {
           }}
         >
           {inputs.map((input, index) => (
-            <TextInput
-              name={input.fieldName}
-              key={index}
-              extended={input.extended}
-              value={input.initValue}
-              callback={this.handleInput}
-            ></TextInput>
+            <div key={index}>
+              {input.label && (
+                <label className={style.form_label}>{input.label}</label>
+              )}
+              <TextInput
+                name={input.fieldName}
+                extended={input.extended}
+                value={input.initValue}
+                callback={this.handleInput}
+              ></TextInput>
+            </div>
           ))}
         </form>
         <button

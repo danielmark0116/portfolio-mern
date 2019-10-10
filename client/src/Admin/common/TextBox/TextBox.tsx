@@ -10,7 +10,11 @@ interface IProps {
 const TextBox = (props: IProps) => {
   const { children, html, htmlParse } = props;
 
-  return <div>{htmlParse ? ReactHtmlParser(html) : <p>{children}</p>}</div>;
+  return (
+    <div style={{ padding: '0 5px' }}>
+      {htmlParse ? ReactHtmlParser(html) : <p>{children}</p>}
+    </div>
+  );
 };
 
 TextBox.defaultProps = {
