@@ -1,34 +1,27 @@
 import React, { Component, Fragment } from 'react';
 
-import Form from '../common/Form/Form';
-
+import SizedBox from '../common/SizedBox/SizedBox';
 import LinksUpdate from '../features/LinksUpdate/LinksUpdateContainer';
-
-const inputsW = [
-  {
-    fieldName: 'githubLink',
-    label: '',
-    initValue: 'tutaj to <b>bylo</b> juz',
-    extended: true
-  },
-  {
-    fieldName: 'instagramLink',
-    label: 'test label from here',
-    initValue: 'extended',
-    extended: false
-  }
-];
+import SubtitleUpdate from '../features/SubtitleUpdate/SubtitleUpdateContainer';
+import AboutUpdate from '../features/AboutUpdate/AboutUpdateContainer';
+import ContactUpdate from '../features/ContactUpdate/ContactUpdateContainer';
+import Title from '../common/Title/Title';
 
 export default class Home extends Component {
   render() {
     return (
       <Fragment>
         <LinksUpdate></LinksUpdate>
-        <Form
-          submitAction={(data: any) => console.log(data)}
-          cancelAction={() => console.log('cancel')}
-          inputs={inputsW}
-        ></Form>
+        <hr />
+        <SizedBox space={40} />
+        <ContactUpdate></ContactUpdate>
+        <hr />
+        <SizedBox space={40} />
+        <Title>Other</Title>
+        <SubtitleUpdate></SubtitleUpdate>
+        <AboutUpdate></AboutUpdate>
+        <hr />
+        <SizedBox space={80} />
       </Fragment>
     );
   }

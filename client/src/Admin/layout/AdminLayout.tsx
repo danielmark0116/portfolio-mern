@@ -8,8 +8,12 @@ interface IProps {
 
 const links = [
   {
-    path: '/admin',
+    path: '/',
     title: 'home'
+  },
+  {
+    path: '/admin',
+    title: 'generals'
   },
   {
     path: '/admin/projects',

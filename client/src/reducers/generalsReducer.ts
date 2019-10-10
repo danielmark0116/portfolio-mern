@@ -1,18 +1,37 @@
 import * as types from '../actions/actionTypes';
 import { ActionTypes } from '../actions/actionTypes';
-import { generalsData, generalsDataLinks } from '../types/generalsData';
+import {
+  generalsData,
+  generalsDataLinks,
+  generalsDataElements,
+  generalsDataContact
+} from '../types/generalsData';
 import { requestData } from '../types/requestData';
 import { AppState } from '../store';
 
 // SELECTORS
 export const selectorGeneralsLinks = (state: AppState): generalsDataLinks => {
-  const links: generalsDataLinks = {
+  return {
     instagramLink: state.generals.generalsData.instagramLink,
     githubLink: state.generals.generalsData.githubLink,
     linkedInLink: state.generals.generalsData.linkedInLink
   };
-  return links;
 };
+
+export const selectorGeneralContacts = (
+  state: AppState
+): generalsDataContact => {
+  return {
+    phone: state.generals.generalsData.phone,
+    email: state.generals.generalsData.email
+  };
+};
+
+export const selectorGeneralSubtitle = (state: AppState): string =>
+  state.generals.generalsData.subtitle;
+
+export const selectorGeneralAbout = (state: AppState): string =>
+  state.generals.generalsData.about;
 
 // GENERALS REDUCER
 interface initState {

@@ -25,3 +25,8 @@ export interface generalsDataLinks {
   instagramLink: string;
   linkedInLink: string;
 }
+
+export interface generalsDataContact {
+  phone: string;
+  email: string;
+}
