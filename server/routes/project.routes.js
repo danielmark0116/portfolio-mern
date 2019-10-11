@@ -8,7 +8,17 @@ const projectController = require('../controller/project.controller');
 const multer = require('multer');
 const upload = multer();
 
-router.get('/', projectController.getProjects);
+// PREFIX URL
+// /api/project
+
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  projectController.getProjects
+);
+
+router.get('/published', projectController.getPublishedProjects);
 
 router.get('/:id', projectController.getOneProject);
 
@@ -28,7 +38,7 @@ router.put(
   projectController.putProject
 );
 
-router.put(
+router.patch(
   '/publish/:id',
   passport.authenticate('jwt', { session: false }),
   isAdmin,

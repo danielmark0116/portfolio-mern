@@ -1,5 +1,7 @@
 import { userData } from '../types/userData';
-import { generalsData, generalsDataElements } from '../types/generalsData';
+import { generalsData } from '../types/generalsData';
+import { projectData } from '../types/projectData';
+import { requestData } from '../types/requestData';
 
 // REQUEST
 export const REQUEST_START = 'REQUEST_START';
@@ -8,16 +10,17 @@ export const REQUEST_FAIL = 'REQUEST_FAIL';
 
 interface requestStartActionType {
   type: typeof REQUEST_START;
+  payload: requestData;
 }
 
 interface requestSuccessActionType {
   type: typeof REQUEST_SUCCESS;
-  payload: string;
+  payload: requestData;
 }
 
 interface requestFailActionType {
   type: typeof REQUEST_FAIL;
-  payload: string;
+  payload: requestData;
 }
 
 // AUTH
@@ -70,6 +73,46 @@ interface generalsUpdateSuccessActionType {
   payload: generalsData;
 }
 
+// PROJECTS
+export const PROJECTS_GET_ALL = 'PROJECTS_GET_ALL';
+export const PROJECTS_GET_ONLY_PUBLISHED = 'PROJECTS_GET_ONLY_PUBLISHED';
+export const PROJECTS_GET_ONE = 'PROJECTS_GET_ONE';
+export const PROJECTS_PUBLISH_ONE = 'PROJECTS_PUBLISH_ONE';
+export const PROJECTS_ADD_ONE = 'PROJECTS_ADD_ONE';
+export const PROJECTS_EDIT_ONE = 'PROJECTS_EDIT_ONE';
+export const PROJECTS_DELETE_ONE = 'PROJECTS_DELETE_ONE';
+
+interface projectsGetAllActionType {
+  type: typeof PROJECTS_GET_ALL;
+  payload: projectData[];
+}
+
+interface projectsGetOnlyPublishedActionType {
+  type: typeof PROJECTS_GET_ONLY_PUBLISHED;
+  payload: projectData[];
+}
+
+interface projectsGetOneActionType {
+  type: typeof PROJECTS_GET_ONE;
+  payload: projectData;
+}
+
+interface projectsPublishOneActionType {
+  type: typeof PROJECTS_PUBLISH_ONE;
+}
+
+interface projectsAddOneActionType {
+  type: typeof PROJECTS_ADD_ONE;
+}
+
+interface projectsEditOneActionType {
+  type: typeof PROJECTS_EDIT_ONE;
+}
+
+interface projectsDeleteOneActionType {
+  type: typeof PROJECTS_DELETE_ONE;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -81,4 +124,11 @@ export type ActionTypes =
   | generalsGetAllActionType
   | generalsGetAllSuccessActionType
   | generalsUpdateActionType
-  | generalsUpdateSuccessActionType;
+  | generalsUpdateSuccessActionType
+  | projectsGetAllActionType
+  | projectsGetOnlyPublishedActionType
+  | projectsGetOneActionType
+  | projectsPublishOneActionType
+  | projectsAddOneActionType
+  | projectsEditOneActionType
+  | projectsDeleteOneActionType;

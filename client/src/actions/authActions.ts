@@ -6,6 +6,7 @@ import Cookie from 'js-cookie';
 import { googleResponseData } from '../types/googleResponseData';
 import { userData } from '../types/userData';
 import jwt from 'jsonwebtoken';
+import { requestStart, requestSuccess, requestFail } from './requestActions';
 
 export const authLogin = (): ActionTypes => ({
   type: types.AUTH_LOGIN
@@ -25,20 +26,6 @@ export const authLoginSuccess = (
 
 export const authLoginFail = (): ActionTypes => ({
   type: types.AUTH_LOGIN_FAIL
-});
-
-export const requestStart = (): ActionTypes => ({
-  type: types.REQUEST_START
-});
-
-export const requestFail = (errMsg: string = ''): ActionTypes => ({
-  type: types.REQUEST_FAIL,
-  payload: errMsg
-});
-
-export const requestSuccess = (errMsg: string = ''): ActionTypes => ({
-  type: types.REQUEST_SUCCESS,
-  payload: errMsg
 });
 
 // THUNKS

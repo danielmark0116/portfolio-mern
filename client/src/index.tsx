@@ -11,6 +11,7 @@ import {
   generalsGetAllThunk,
   generalsUpdateThunk
 } from './actions/generalsActions';
+import { projectsGetOnlyPublishedThunk } from './actions/projectsActions';
 
 const Root = () => (
   <BrowserRouter>
@@ -26,6 +27,8 @@ ReactDOM.render(
 );
 
 store.dispatch(generalsGetAllThunk());
+
+store.dispatch(projectsGetOnlyPublishedThunk());
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

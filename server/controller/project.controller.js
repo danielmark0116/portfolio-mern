@@ -16,6 +16,22 @@ exports.getProjects = async (req, res) => {
   }
 };
 
+exports.getPublishedProjects = async (req, res) => {
+  try {
+    let response = await Project.find({ published: true });
+
+    res.json({
+      response
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: true,
+      succes: false,
+      errorMsg: err.message
+    });
+  }
+};
+
 exports.getOneProject = async (req, res) => {
   try {
     let response = await Project.find({ _id: req.params.id });

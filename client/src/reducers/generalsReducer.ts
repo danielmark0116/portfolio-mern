@@ -54,7 +54,7 @@ const initState: initState = {
     error: false,
     success: false,
     pending: false,
-    errorMsg: ''
+    msg: ''
   }
 };
 
@@ -73,32 +73,17 @@ export function generalsReducer(
     case types.REQUEST_START:
       return {
         ...state,
-        requestData: {
-          error: false,
-          success: false,
-          pending: true,
-          errorMsg: ''
-        }
+        requestData: action.payload
       };
     case types.REQUEST_FAIL:
       return {
         ...state,
-        requestData: {
-          error: true,
-          success: false,
-          pending: false,
-          errorMsg: action.payload
-        }
+        requestData: action.payload
       };
     case types.REQUEST_SUCCESS:
       return {
         ...state,
-        requestData: {
-          error: false,
-          success: true,
-          pending: false,
-          errorMsg: ''
-        }
+        requestData: action.payload
       };
     default:
       return state;

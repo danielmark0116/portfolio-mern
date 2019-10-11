@@ -1,17 +1,15 @@
+import axios from 'axios';
+
 import * as types from './actionTypes';
 import { ActionTypes } from './actionTypes';
 import { generalsData, generalsDataElements } from '../types/generalsData';
 import { Dispatch } from 'redux';
-import axios from 'axios';
+import { requestStart, requestSuccess, requestFail } from './requestActions';
 
-import { fetchToken } from '../utils/fetchToken';
+import { updateToken } from '../utils/fetchToken';
 import { formatResponse } from '../utils/generalsData';
 
-let token = fetchToken();
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-function updateToken(): void {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${fetchToken()}`;
-}
+updateToken();
 
 // ACTIONS
 export const generalsGetAll = (): ActionTypes => ({
@@ -30,20 +28,6 @@ export const generalsUpdate = (): ActionTypes => ({
 export const generalsUpdateSuccess = (payload: generalsData): ActionTypes => ({
   type: types.GENERALS_UPDATE_SUCCESS,
   payload
-});
-
-export const requestStart = (): ActionTypes => ({
-  type: types.REQUEST_START
-});
-
-export const requestFail = (errMsg: string = ''): ActionTypes => ({
-  type: types.REQUEST_FAIL,
-  payload: errMsg
-});
-
-export const requestSuccess = (errMsg: string = ''): ActionTypes => ({
-  type: types.REQUEST_SUCCESS,
-  payload: errMsg
 });
 
 // THUNKS
