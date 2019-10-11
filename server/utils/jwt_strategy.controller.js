@@ -9,7 +9,6 @@ opts.secretOrKey = process.env.JWT_SECRET;
 exports.initJwtStrategy = function() {
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
-      // TUTAJ passport szuka w DB usera po id z danych z tokena. w zaleznosci jak zapisales dane w tokenie, tak musisz je wydobyc
       User.findById(jwt_payload.user._id)
         .then(user => {
           if (user) {
