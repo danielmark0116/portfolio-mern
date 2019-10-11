@@ -37,10 +37,12 @@ jwtStrategySetting.initJwtStrategy();
 const projectRoutes = require('./routes/project.routes');
 const authRoutes = require('./routes/auth.routes');
 const generalRoutes = require('./routes/general.routes');
+// const imageRoutes = require('./routes/imageTest.routes');
 
-app.use('/api', projectRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/general', generalRoutes);
+app.use('/api/project', projectRoutes);
+// app.use('/api/image', imageRoutes);
 app.get(
   '/secret',
   passport.authenticate('jwt', { session: false }),
@@ -70,6 +72,7 @@ if (process.env.MODE === 'production') {
     res.render('index');
   });
 } else {
+  app.use(express.static(path.join(__dirname, '/uploads')));
   app.use('/', (req, res) => {
     res.send('no such endpoint / develpment mode');
   });

@@ -12,6 +12,7 @@ import Contact from './App/contactPage/Contact';
 import Work from './App/workPage/Work';
 import Work2 from './App/workPage/Work2';
 import About from './App/aboutPage/About';
+import ImageTest from './App/ImageTest';
 
 const AdminRoutes = () => {
   return (
@@ -43,6 +44,9 @@ const AppRoutes = () => {
         </Route>
         <Route exact path="/work">
           <Work></Work>
+        </Route>
+        <Route exact path="/image">
+          <ImageTest></ImageTest>
         </Route>
         <Route exact path="/about">
           <About></About>
