@@ -28,4 +28,18 @@ router.put(
   projectController.putProject
 );
 
+router.put(
+  '/publish/:id',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  projectController.publishProject
+);
+
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  projectController.deleteProject
+);
+
 module.exports = router;

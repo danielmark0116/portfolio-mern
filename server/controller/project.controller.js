@@ -102,3 +102,43 @@ exports.putProject = async (req, res) => {
     });
   }
 };
+
+exports.publishProject = async (req, res) => {
+  try {
+    const projectId = req.params.id;
+
+    let editedProject = await Project.findOne({ _id: projectId });
+
+    editedProject.published = !editedProject.published;
+
+    let response = await editedProject.save();
+
+    res.json({
+      response
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: true,
+      errorMsg: err.message
+    });
+  }
+};
+
+exports.deleteProject = async (req, res) => {
+  try {
+    const projectId = req.params.id;
+
+    await Project.findOneAndRemove({ _id: projectId });
+
+    res.json({
+      response: 'Project removed from database'
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: true,
+      errorMsg: err.message
+    });
+  }
+};
