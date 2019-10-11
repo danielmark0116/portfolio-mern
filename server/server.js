@@ -72,7 +72,6 @@ if (process.env.MODE === 'production') {
     res.render('index');
   });
 } else {
-  app.use(express.static(path.join(__dirname, '/uploads')));
   app.use('/', (req, res) => {
     res.send('no such endpoint / develpment mode');
   });
