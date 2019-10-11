@@ -4,7 +4,8 @@ exports.dbConnection = function() {
   mongoose.connect('mongodb://localhost:27017/portfolio_db', {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   });
 
   let db = mongoose.connection;
