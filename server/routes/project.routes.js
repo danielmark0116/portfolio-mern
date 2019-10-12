@@ -31,10 +31,18 @@ router.post(
 );
 
 router.put(
-  '/:id',
+  '/:id/withPic',
   passport.authenticate('jwt', { session: false }),
   isAdmin,
   upload.single('pic'),
+  projectController.putProjectWithPic
+);
+
+router.put(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  upload.none(),
   projectController.putProject
 );
 

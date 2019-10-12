@@ -14,6 +14,11 @@ const Project = new mongoose.Schema({
     required: true,
     default: []
   },
+  technologies: {
+    type: Array,
+    required: true,
+    default: []
+  },
   category: {
     type: String,
     required: true,

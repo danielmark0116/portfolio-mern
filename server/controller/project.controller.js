@@ -37,7 +37,7 @@ exports.getOneProject = async (req, res) => {
     let response = await Project.find({ _id: req.params.id });
 
     res.json({
-      response
+      response: response[0]
     });
   } catch (err) {
     res.status(500).json({
@@ -64,6 +64,7 @@ exports.postProject = async (req, res) => {
     } else {
       newProject.pic = req.file.buffer.toString('base64');
       newProject.tags = req.body.tags.split(',');
+      newProject.technologies = req.body.technologies.split(',');
       newProject.picType = fileType;
 
       await newProject.save();
@@ -81,7 +82,7 @@ exports.postProject = async (req, res) => {
   }
 };
 
-exports.putProject = async (req, res) => {
+exports.putProjectWithPic = async (req, res) => {
   try {
     const projectId = req.params.id;
 
@@ -101,6 +102,7 @@ exports.putProject = async (req, res) => {
           ...req.body,
           pic: req.file.buffer.toString('base64'),
           tags: req.body.tags.split(','),
+          technologies: req.body.technologies.split(','),
           picType: fileType
         },
         { new: true }
@@ -110,6 +112,32 @@ exports.putProject = async (req, res) => {
         response: editedProject
       });
     }
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: true,
+      errorMsg: err.message
+    });
+  }
+};
+
+exports.putProject = async (req, res) => {
+  try {
+    const projectId = req.params.id;
+
+    let editedProject = await Project.findOneAndUpdate(
+      { _id: projectId },
+      {
+        ...req.body,
+        tags: req.body.tags.split(','),
+        technologies: req.body.technologies.split(',')
+      },
+      { new: true }
+    );
+
+    res.json({
+      response: editedProject
+    });
   } catch (err) {
     res.status(500).json({
       success: false,

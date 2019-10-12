@@ -62,7 +62,7 @@ export const generalsRequestFail = (msg: string = ''): ActionTypes => ({
 // THUNKS
 export const generalsGetAllThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(generalsRequestStart());
+    dispatch(generalsRequestStart('Get all generals'));
     dispatch(generalsGetAll());
 
     try {
@@ -71,7 +71,7 @@ export const generalsGetAllThunk = () => {
 
       dispatch(generalsGetAllSuccess(formatResponse(data)));
 
-      dispatch(generalsRequestSuccess());
+      dispatch(generalsRequestSuccess('Got all generals'));
     } catch (err) {
       dispatch(generalsRequestFail(err.message));
     }
@@ -80,7 +80,7 @@ export const generalsGetAllThunk = () => {
 
 export const generalsUpdateThunk = (data: generalsDataElements) => {
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(generalsRequestStart());
+    dispatch(generalsRequestStart('Generals update'));
     dispatch(generalsUpdate());
     updateToken();
 
@@ -89,7 +89,7 @@ export const generalsUpdateThunk = (data: generalsDataElements) => {
       let resData = await response.data.response;
 
       dispatch(generalsUpdateSuccess(formatResponse(resData)));
-      dispatch(generalsRequestSuccess());
+      dispatch(generalsRequestSuccess('Updated generals'));
     } catch (err) {
       dispatch(generalsRequestFail(err.message));
     }

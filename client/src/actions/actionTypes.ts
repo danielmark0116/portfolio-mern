@@ -141,6 +141,7 @@ interface projectsGetOneActionType {
 
 interface projectsPublishOneActionType {
   type: typeof PROJECTS_PUBLISH_ONE;
+  payload: projectData;
 }
 
 interface projectsAddOneActionType {
@@ -153,6 +154,7 @@ interface projectsEditOneActionType {
 
 interface projectsDeleteOneActionType {
   type: typeof PROJECTS_DELETE_ONE;
+  payload: string;
 }
 
 interface projectsRequestSuccessActionType {

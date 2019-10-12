@@ -60,7 +60,7 @@ export const authRequestFail = (msg: string = ''): ActionTypes => ({
 // THUNKS
 export const authLoginCheckThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(authRequestStart());
+    dispatch(authRequestStart('Login check'));
     dispatch(authCheck());
     const token = Cookie.get('googleAuthToken');
     const secret = process.env.REACT_APP_JWT_SECRET || '';
@@ -82,7 +82,7 @@ export const authLoginCheckThunk = () => {
               decoded.user.admin
             )
           );
-          dispatch(authRequestSuccess());
+          dispatch(authRequestSuccess('Succesfully logged in'));
         }
       });
     }
@@ -98,7 +98,7 @@ export const authLoginThunk = (googleResponseData: googleResponseData) => {
   };
 
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(authRequestStart());
+    dispatch(authRequestStart('Login start'));
     dispatch(authLogin());
     try {
       let response = await axios.post('/auth/login/google', userData);
@@ -111,7 +111,7 @@ export const authLoginThunk = (googleResponseData: googleResponseData) => {
       authLoginCheckThunk();
 
       dispatch(authLoginSuccess({ email, name, googleId, photo }, admin));
-      dispatch(authRequestSuccess());
+      dispatch(authRequestSuccess('Succesfully logged in'));
     } catch (err) {
       dispatch(authRequestFail(err.message));
       dispatch(authLoginFail());
