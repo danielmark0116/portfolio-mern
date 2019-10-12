@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
+import SizedBox from '../SizedBox/SizedBox';
 
 import style from './form.module.scss';
 
@@ -14,6 +15,8 @@ interface IProps {
   }[];
   submitAction: Function;
   cancelAction: Function;
+  formData: Boolean;
+  spaced: Boolean;
 }
 
 interface IState {
@@ -21,6 +24,11 @@ interface IState {
 }
 
 class Form extends Component<IProps, IState> {
+  static defaultProps = {
+    formData: false,
+    spaced: false
+  };
+
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -30,7 +38,7 @@ class Form extends Component<IProps, IState> {
 
     inputs.forEach(input => {
       this.state = {
-        inputs: { ...this.state.inputs, [input.fieldName]: '' }
+        inputs: { ...this.state.inputs, [input.fieldName]: input.initValue }
       };
     });
   }
@@ -50,7 +58,7 @@ class Form extends Component<IProps, IState> {
   };
 
   render() {
-    const { inputs } = this.props;
+    const { inputs, spaced } = this.props;
 
     return (
       <Fragment>
@@ -72,6 +80,7 @@ class Form extends Component<IProps, IState> {
                 value={input.initValue}
                 callback={this.handleInput}
               ></TextInput>
+              {spaced && <SizedBox space={10} />}
             </div>
           ))}
         </form>
@@ -79,6 +88,7 @@ class Form extends Component<IProps, IState> {
         <Button type="secondary" action={this.handleCancel}>
           cancel
         </Button>
+        {spaced && <SizedBox space={100} />}
       </Fragment>
     );
   }

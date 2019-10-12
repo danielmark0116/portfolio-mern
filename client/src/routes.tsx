@@ -5,6 +5,8 @@ import AppRoot from './App/AppRoot';
 
 import AdminRoot from './Admin/AdminRoot';
 import AdminHome from './Admin/pages/Home';
+import AdminProjects from './Admin/pages/Projects';
+import AdminProjectForm from './Admin/features/ProjectForm/ProjectFormContainer';
 
 import PageLayout from './App/layout/PageLayout';
 import Home from './App/homePage/Home';
@@ -21,8 +23,14 @@ const AdminRoutes = () => {
         <Route exact path="/admin">
           <AdminHome></AdminHome>
         </Route>
-        <Route exact path="/admin/contact">
-          {<p>ADMIN contact page</p>}
+        <Route exact path="/admin/projects">
+          <AdminProjects></AdminProjects>
+        </Route>
+        <Route exact path="/admin/projects/add">
+          <AdminProjectForm edit={false}></AdminProjectForm>
+        </Route>
+        <Route exact path="/admin/projects/edit/:id">
+          <AdminProjectForm edit={true}></AdminProjectForm>
         </Route>
         <Route path="*">
           <PageNotFound></PageNotFound>

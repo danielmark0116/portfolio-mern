@@ -122,7 +122,7 @@ export const projectsGetOneByIdThunk = (id: string) => {
 };
 
 export const projectsPublishOneThunk = (id: string) => {
-  return async (dispatch: Dispatch<ActionTypes>) => {
+  return async (dispatch: Dispatch<ActionTypes | any>) => {
     updateToken();
     dispatch(projectsRequestStart('Publish one project'));
 
@@ -131,6 +131,7 @@ export const projectsPublishOneThunk = (id: string) => {
 
       dispatch(projectsPublishOne(response.data.response));
       dispatch(projectsRequestSuccess('Published one project'));
+      dispatch(projectsGetAllThunk());
     } catch (err) {
       dispatch(projectsRequestFail(err.message));
     }
@@ -161,7 +162,7 @@ export const projectsEditOneThunk = (
   data: FormData,
   withPic: Boolean
 ) => {
-  return async (dispatch: Dispatch<ActionTypes>) => {
+  return async (dispatch: Dispatch<ActionTypes | any>) => {
     updateToken();
 
     try {
@@ -179,6 +180,8 @@ export const projectsEditOneThunk = (
 
       dispatch(projectsEditOne());
       dispatch(projectsRequestSuccess('Edited project'));
+      alert('Edited Project');
+      dispatch(projectsGetOneByIdThunk(id));
     } catch (err) {
       dispatch(projectsRequestFail(err.message));
     }

@@ -1,0 +1,166 @@
+import React, { Component, Fragment } from 'react';
+import { stateToProps, dispatchToProps } from './ProjectFormContainer';
+
+import Title from '../../common/Title/Title';
+import Form from '../../common/Form/Form';
+import FileInput from '../../common/FileInput/FileInput';
+
+import { parseFormData } from '../../../utils/parseFormData';
+
+type Props = stateToProps & dispatchToProps;
+
+interface IState {
+  test: any;
+  pageTitle: string;
+  file: FileList | null;
+  withPic: Boolean;
+}
+
+export default class ProjectForm extends Component<Props, IState> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      test: 'any',
+      pageTitle: this.props.edit ? 'Edit' : 'Add new',
+      file: null,
+      withPic: true
+    };
+  }
+
+  componentDidMount() {
+    const { edit, idToEdit, getOne } = this.props;
+
+    if (edit) {
+      getOne(idToEdit);
+    }
+  }
+
+  handleFileSwitch = () => {
+    this.setState({
+      withPic: !this.state.withPic
+    });
+  };
+
+  handleFile = (files: FileList) => {
+    this.setState({
+      file: files
+    });
+  };
+
+  formAlert = () => {
+    alert('Invalid form. Double check it');
+  };
+
+  handleSubmit = (input: any) => {
+    const { withPic, file } = this.state;
+    const { edit, editProject, addProject, singleProject } = this.props;
+
+    if (!edit || withPic) {
+      if (file) {
+        const formData = parseFormData(input);
+        formData.set('pic', file[0]);
+
+        withPic && edit && editProject(singleProject._id, formData, true);
+        !edit && addProject(formData);
+      } else {
+        this.formAlert();
+      }
+    } else {
+      const formData = parseFormData(input);
+
+      editProject(singleProject._id, formData, false);
+    }
+  };
+
+  editForm = () => {
+    const { singleProject, edit } = this.props;
+    const { pageTitle, withPic } = this.state;
+
+    return (
+      <Fragment>
+        <Title>{pageTitle}</Title>
+        {edit && (
+          <button onClick={this.handleFileSwitch}>
+            {JSON.stringify(withPic)}
+          </button>
+        )}
+        <br />
+        {withPic && <FileInput action={this.handleFile} />}
+        <Form
+          spaced={true}
+          inputs={[
+            {
+              fieldName: 'title',
+              label: 'Title',
+              initValue: edit ? singleProject.title || '' : '',
+              extended: false
+            },
+            {
+              fieldName: 'tags',
+              label: 'Tags',
+              initValue: edit
+                ? singleProject.tags
+                  ? singleProject.tags.join(',')
+                  : ''
+                : '',
+              extended: false
+            },
+            {
+              fieldName: 'category',
+              label: 'Category',
+              initValue: edit ? singleProject.category || '' : '',
+              extended: false
+            },
+            {
+              fieldName: 'short_desc',
+              label: 'Short description',
+              initValue: edit ? singleProject.short_desc || '' : '',
+              extended: false
+            },
+            {
+              fieldName: 'desc',
+              label: 'Description',
+              initValue: edit ? singleProject.desc || '' : '',
+              extended: true
+            },
+            {
+              fieldName: 'link',
+              label: 'Link',
+              initValue: edit ? singleProject.link || '' : '',
+              extended: false
+            },
+            {
+              fieldName: 'repo_link',
+              label: 'Repo link',
+              initValue: edit ? singleProject.repo_link || '' : '',
+              extended: false
+            },
+            {
+              fieldName: 'technologies',
+              label: 'technologies',
+              initValue: edit
+                ? singleProject.technologies
+                  ? singleProject.technologies.join(',')
+                  : ''
+                : '',
+              extended: false
+            }
+          ]}
+          submitAction={this.handleSubmit}
+          cancelAction={() => {}}
+        />
+        {/* <img src={`data:image/jpeg;base64,${singleProject.pic}`} alt="" /> */}
+      </Fragment>
+    );
+  };
+
+  render() {
+    const { pending, error, success } = this.props.requestData;
+    const { singleProject, edit } = this.props;
+
+    if (!edit) return this.editForm();
+    if (!pending && success && singleProject && !error) return this.editForm();
+
+    return <div>loading</div>;
+  }
+}

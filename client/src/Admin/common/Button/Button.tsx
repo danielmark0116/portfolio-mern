@@ -6,10 +6,11 @@ interface IProps {
   type: 'primary' | 'secondary';
   children: string;
   action: Function;
+  size: 'small' | 'large';
 }
 
 const Button = (props: IProps) => {
-  const { type, children, action } = props;
+  const { type, children, action, size } = props;
 
   return (
     <button
@@ -20,6 +21,7 @@ const Button = (props: IProps) => {
           ? style.admin_button_secondary
           : ''
       }
+      style={size === 'small' ? { fontSize: 12, padding: '8px 15px' } : {}}
       onClick={() => action()}
     >
       {children}
@@ -29,7 +31,8 @@ const Button = (props: IProps) => {
 
 Button.defaultProps = {
   type: 'primary',
-  action: () => null
+  action: () => null,
+  size: 'large'
 };
 
 export default Button;

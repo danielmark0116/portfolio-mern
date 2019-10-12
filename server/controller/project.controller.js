@@ -2,7 +2,7 @@ const Project = require('../model/project.model');
 
 exports.getProjects = async (req, res) => {
   try {
-    let response = await Project.find();
+    let response = await Project.find().sort({ createdAt: 'descending' });
 
     res.json({
       response
@@ -18,7 +18,9 @@ exports.getProjects = async (req, res) => {
 
 exports.getPublishedProjects = async (req, res) => {
   try {
-    let response = await Project.find({ published: true });
+    let response = await Project.find({ published: true }).sort({
+      createdAt: 'descending'
+    });
 
     res.json({
       response

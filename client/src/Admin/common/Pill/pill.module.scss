@@ -1,0 +1,25 @@
+.pill_box {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(black, 0.2);
+  background: white;
+  display: inline;
+  margin: 0 3px;
+  text-transform: uppercase;
+  font-weight: 100;
+
+  &_success {
+    @extend .pill_box;
+    border-color: rgb(31, 172, 19);
+    color: rgb(31, 172, 19);
+    font-weight: 300;
+  }
+
+  &_danger {
+    @extend .pill_box;
+    border-color: rgb(255, 5, 5);
+    color: rgb(255, 5, 5);
+    font-weight: 300;
+  }
+}

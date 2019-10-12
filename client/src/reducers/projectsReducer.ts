@@ -3,12 +3,21 @@ import { AppState } from '../store';
 import { projectData, projectDataElements } from '../types/projectData';
 import { requestData } from '../types/requestData';
 import { ActionTypes } from '../actions/actionTypes';
-import { projectsGetOne } from '../actions/projectsActions';
 
 // SELECTORS
-export const selectorProjectsGetAll = (state: AppState) => ({
-  te: 'st'
-});
+export const selectorProjectsGetAll = (state: AppState): projectData[] => {
+  return state.projects.projects;
+};
+
+export const selectorProjectsGetOne = (
+  state: AppState
+): projectDataElements => {
+  return state.projects.singleProject;
+};
+
+export const selectorProjectsRequestData = (state: AppState): requestData => {
+  return state.projects.requestData;
+};
 
 // PROJECTS REDUCER
 interface initState {

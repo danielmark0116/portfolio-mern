@@ -2,7 +2,7 @@ export interface projectData {
   _id: string;
   title: string;
   tags: string[];
-  technologies: string;
+  technologies: string[];
   published: Boolean;
   category: string;
   short_desc: string;
@@ -17,7 +17,7 @@ export interface projectDataElements {
   _id?: string;
   title?: string;
   tags?: string[];
-  technologies?: string;
+  technologies?: string[];
   published?: Boolean;
   category?: string;
   short_desc?: string;
