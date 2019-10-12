@@ -3,7 +3,6 @@ import { ActionTypes } from '../actions/actionTypes';
 import {
   generalsData,
   generalsDataLinks,
-  generalsDataElements,
   generalsDataContact
 } from '../types/generalsData';
 import { requestData } from '../types/requestData';
@@ -70,17 +69,17 @@ export function generalsReducer(
       return { ...state, generalsData: action.payload };
     case types.GENERALS_UPDATE_SUCCESS:
       return { ...state, generalsData: action.payload };
-    case types.REQUEST_START:
+    case types.GENERALS_REQUEST_START:
       return {
         ...state,
         requestData: action.payload
       };
-    case types.REQUEST_FAIL:
+    case types.GENERALS_REQUEST_FAIL:
       return {
         ...state,
         requestData: action.payload
       };
-    case types.REQUEST_SUCCESS:
+    case types.GENERALS_REQUEST_SUCCESS:
       return {
         ...state,
         requestData: action.payload

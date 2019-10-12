@@ -36,11 +36,11 @@ export function projectsReducer(
       return { ...state, projects: action.payload };
     case types.PROJECTS_GET_ONLY_PUBLISHED:
       return { ...state, projects: action.payload };
-    case types.REQUEST_START:
+    case types.PROJECTS_REQUEST_START:
       return { ...state, requestData: action.payload };
-    case types.REQUEST_SUCCESS:
+    case types.PROJECTS_REQUEST_SUCCESS:
       return { ...state, requestData: action.payload };
-    case types.REQUEST_FAIL:
+    case types.PROJECTS_REQUEST_FAIL:
       return {
         ...state,
         requestData: action.payload

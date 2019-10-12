@@ -2,7 +2,6 @@ import axios from 'axios';
 import * as types from './actionTypes';
 import { ActionTypes } from './actionTypes';
 import { updateToken } from '../utils/fetchToken';
-import { requestStart, requestSuccess, requestFail } from './requestActions';
 import { projectData } from '../types/projectData';
 import { Dispatch } from 'redux';
 
@@ -42,34 +41,64 @@ export const projectsDeleteOne = (): ActionTypes => ({
   type: types.PROJECTS_DELETE_ONE
 });
 
+export const projectsRequestStart = (msg: string = ''): ActionTypes => ({
+  type: types.PROJECTS_REQUEST_START,
+  payload: {
+    error: false,
+    pending: true,
+    success: false,
+    msg: msg
+  }
+});
+
+export const projectsRequestSuccess = (msg: string = ''): ActionTypes => ({
+  type: types.PROJECTS_REQUEST_SUCCESS,
+  payload: {
+    error: false,
+    pending: false,
+    success: true,
+    msg: msg
+  }
+});
+
+export const projectsRequestFail = (errMsg: string = ''): ActionTypes => ({
+  type: types.PROJECTS_REQUEST_FAIL,
+  payload: {
+    error: true,
+    pending: false,
+    success: false,
+    msg: errMsg
+  }
+});
+
 // THUNKS
 export const projectsGetAllThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(requestStart());
+    dispatch(projectsRequestStart());
     updateToken();
 
     try {
       let response = await axios.get('/project');
 
       dispatch(projectsGetAll(response.data));
-      dispatch(requestSuccess('Fetched all projects'));
+      dispatch(projectsRequestSuccess('Fetched all projects'));
     } catch (err) {
-      dispatch(requestFail(err.message, types.PROJECTS_GET_ALL));
+      dispatch(projectsRequestFail(err.message));
     }
   };
 };
 
 export const projectsGetOnlyPublishedThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(requestStart(types.PROJECTS_GET_ONLY_PUBLISHED));
+    dispatch(projectsRequestStart(types.PROJECTS_GET_ONLY_PUBLISHED));
 
     try {
       let response = await axios.get('/project/published');
 
       dispatch(projectsGetOnlyPublished(response.data.response));
-      dispatch(requestSuccess(types.PROJECTS_GET_ONLY_PUBLISHED));
+      dispatch(projectsRequestSuccess(types.PROJECTS_GET_ONLY_PUBLISHED));
     } catch (err) {
-      dispatch(requestFail(err.message, types.PROJECTS_GET_ONLY_PUBLISHED));
+      dispatch(projectsRequestFail(err.message));
     }
   };
 };

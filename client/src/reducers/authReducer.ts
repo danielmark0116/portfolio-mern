@@ -48,17 +48,17 @@ export function authReducer(state = initState, action: ActionTypes) {
       };
     case types.AUTH_LOGIN_FAIL:
       return { ...state, loggedIn: false, isAdmin: false };
-    case types.REQUEST_START:
+    case types.AUTH_REQUEST_START:
       return {
         ...state,
         requestData: action.payload
       };
-    case types.REQUEST_SUCCESS:
+    case types.AUTH_REQUEST_SUCCESS:
       return {
         ...state,
         requestData: action.payload
       };
-    case types.REQUEST_FAIL:
+    case types.AUTH_REQUEST_FAIL:
       return {
         ...state,
         requestData: action.payload

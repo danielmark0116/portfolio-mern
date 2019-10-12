@@ -4,7 +4,6 @@ import * as types from './actionTypes';
 import { ActionTypes } from './actionTypes';
 import { generalsData, generalsDataElements } from '../types/generalsData';
 import { Dispatch } from 'redux';
-import { requestStart, requestSuccess, requestFail } from './requestActions';
 
 import { updateToken } from '../utils/fetchToken';
 import { formatResponse } from '../utils/generalsData';
@@ -30,11 +29,41 @@ export const generalsUpdateSuccess = (payload: generalsData): ActionTypes => ({
   payload
 });
 
+export const generalsRequestStart = (msg: string = ''): ActionTypes => ({
+  type: types.GENERALS_REQUEST_START,
+  payload: {
+    error: false,
+    pending: true,
+    success: false,
+    msg: msg
+  }
+});
+
+export const generalsRequestSuccess = (msg: string = ''): ActionTypes => ({
+  type: types.GENERALS_REQUEST_SUCCESS,
+  payload: {
+    error: false,
+    pending: false,
+    success: true,
+    msg: msg
+  }
+});
+
+export const generalsRequestFail = (msg: string = ''): ActionTypes => ({
+  type: types.GENERALS_REQUEST_FAIL,
+  payload: {
+    error: true,
+    pending: false,
+    success: false,
+    msg: msg
+  }
+});
+
 // THUNKS
 export const generalsGetAllThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch(generalsRequestStart());
     dispatch(generalsGetAll());
-    dispatch(requestStart());
 
     try {
       let response = await axios.get('/general');
@@ -42,17 +71,17 @@ export const generalsGetAllThunk = () => {
 
       dispatch(generalsGetAllSuccess(formatResponse(data)));
 
-      dispatch(requestSuccess());
+      dispatch(generalsRequestSuccess());
     } catch (err) {
-      dispatch(requestFail(err.message));
+      dispatch(generalsRequestFail(err.message));
     }
   };
 };
 
 export const generalsUpdateThunk = (data: generalsDataElements) => {
   return async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch(generalsRequestStart());
     dispatch(generalsUpdate());
-    dispatch(requestStart());
     updateToken();
 
     try {
@@ -60,9 +89,9 @@ export const generalsUpdateThunk = (data: generalsDataElements) => {
       let resData = await response.data.response;
 
       dispatch(generalsUpdateSuccess(formatResponse(resData)));
-      dispatch(requestSuccess());
+      dispatch(generalsRequestSuccess());
     } catch (err) {
-      dispatch(requestFail(err.message));
+      dispatch(generalsRequestFail(err.message));
     }
   };
 };

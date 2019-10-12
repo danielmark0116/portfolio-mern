@@ -29,6 +29,10 @@ export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_LOGIN_SUCCESS = 'AUTH_LOGIN_SUCCESS';
 export const AUTH_LOGIN_FAIL = 'AUTH_LOGIN_FAIL';
 
+export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
+export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
+export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
+
 interface authCheckActionType {
   type: typeof AUTH_CHECK;
 }
@@ -49,11 +53,30 @@ interface authLoginFailActionType {
   type: typeof AUTH_LOGIN_FAIL;
 }
 
+interface authRequestSuccessActionType {
+  type: typeof AUTH_REQUEST_SUCCESS;
+  payload: requestData;
+}
+
+interface authRequestFailActionType {
+  type: typeof AUTH_REQUEST_FAIL;
+  payload: requestData;
+}
+
+interface authRequestStartActionType {
+  type: typeof AUTH_REQUEST_START;
+  payload: requestData;
+}
+
 // GENERALS
 export const GENERALS_GET_ALL = 'GENERALS_GET_ALL';
 export const GENERALS_GET_ALL_SUCCESS = 'GENERALS_GET_ALL_SUCCESS';
 export const GENERALS_UPDATE = 'GENERALS_UPDATE';
 export const GENERALS_UPDATE_SUCCESS = 'GENERALS_UPDATE_SUCCESS';
+
+export const GENERALS_REQUEST_START = 'GENERALS_REQUEST_START';
+export const GENERALS_REQUEST_SUCCESS = 'GENERALS_REQUEST_SUCCESS';
+export const GENERALS_REQUEST_FAIL = 'GENERALS_REQUEST_FAIL';
 
 interface generalsGetAllActionType {
   type: typeof GENERALS_GET_ALL;
@@ -73,6 +96,21 @@ interface generalsUpdateSuccessActionType {
   payload: generalsData;
 }
 
+interface generalsRequestSuccessActionType {
+  type: typeof GENERALS_REQUEST_SUCCESS;
+  payload: requestData;
+}
+
+interface generalsRequestFailActionType {
+  type: typeof GENERALS_REQUEST_FAIL;
+  payload: requestData;
+}
+
+interface generalsRequestStartActionType {
+  type: typeof GENERALS_REQUEST_START;
+  payload: requestData;
+}
+
 // PROJECTS
 export const PROJECTS_GET_ALL = 'PROJECTS_GET_ALL';
 export const PROJECTS_GET_ONLY_PUBLISHED = 'PROJECTS_GET_ONLY_PUBLISHED';
@@ -81,6 +119,10 @@ export const PROJECTS_PUBLISH_ONE = 'PROJECTS_PUBLISH_ONE';
 export const PROJECTS_ADD_ONE = 'PROJECTS_ADD_ONE';
 export const PROJECTS_EDIT_ONE = 'PROJECTS_EDIT_ONE';
 export const PROJECTS_DELETE_ONE = 'PROJECTS_DELETE_ONE';
+
+export const PROJECTS_REQUEST_START = 'PROJECTS_REQUEST_START';
+export const PROJECTS_REQUEST_SUCCESS = 'PROJECTS_REQUEST_SUCCESS';
+export const PROJECTS_REQUEST_FAIL = 'PROJECTS_REQUEST_FAIL';
 
 interface projectsGetAllActionType {
   type: typeof PROJECTS_GET_ALL;
@@ -113,6 +155,21 @@ interface projectsDeleteOneActionType {
   type: typeof PROJECTS_DELETE_ONE;
 }
 
+interface projectsRequestSuccessActionType {
+  type: typeof PROJECTS_REQUEST_SUCCESS;
+  payload: requestData;
+}
+
+interface projectsRequestFailActionType {
+  type: typeof PROJECTS_REQUEST_FAIL;
+  payload: requestData;
+}
+
+interface projectsRequestStartActionType {
+  type: typeof PROJECTS_REQUEST_START;
+  payload: requestData;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -131,4 +188,13 @@ export type ActionTypes =
   | projectsPublishOneActionType
   | projectsAddOneActionType
   | projectsEditOneActionType
-  | projectsDeleteOneActionType;
+  | projectsDeleteOneActionType
+  | authRequestSuccessActionType
+  | authRequestFailActionType
+  | authRequestStartActionType
+  | generalsRequestSuccessActionType
+  | generalsRequestFailActionType
+  | generalsRequestStartActionType
+  | projectsRequestStartActionType
+  | projectsRequestSuccessActionType
+  | projectsRequestFailActionType;
