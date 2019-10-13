@@ -1,6 +1,6 @@
 .flex_grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
@@ -9,6 +9,16 @@
 
   .flex_item {
     flex: 1 0 49%;
+    max-width: 49%;
+
+    @include tablets {
+      flex: 1 0 100%;
+    }
+  }
+
+  .flex_item_3 {
+    flex: 1 0 32%;
+    max-width: 32%;
 
     @include tablets {
       flex: 1 0 100%;

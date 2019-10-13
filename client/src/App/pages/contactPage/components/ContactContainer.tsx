@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
 import Contact from './Contact.presentational';
-import { AppState } from '../../../store';
+import { AppState } from '../../../../store';
 import {
   selectorGeneralContacts,
   selectorGeneralsLinks
-} from '../../../reducers/generalsReducer';
+} from '../../../../reducers/generalsReducer';
 import {
   generalsDataContact,
   generalsDataLinks
-} from '../../../types/generalsData';
+} from '../../../../types/generalsData';
 
 export interface stateToProps {
   contactData: generalsDataContact;

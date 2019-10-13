@@ -9,11 +9,11 @@ import AdminProjects from './Admin/pages/Projects';
 import AdminProjectForm from './Admin/features/ProjectForm/ProjectFormContainer';
 
 import PageLayout from './App/layout/PageLayout';
-import Home from './App/homePage/Home';
-import Contact from './App/contactPage/Contact';
-import Work from './App/workPage/Work';
-import Work2 from './App/workPage/Work2';
-import About from './App/aboutPage/About';
+import Home from './App/pages/homePage/Home';
+import Contact from './App/pages/contactPage/Contact';
+import Work from './App/pages/worksPage/Works';
+import Work2 from './App/pages/workPage/Work';
+import About from './App/pages/aboutPage/About';
 import ImageTest from './App/ImageTest';
 
 const AdminRoutes = () => {

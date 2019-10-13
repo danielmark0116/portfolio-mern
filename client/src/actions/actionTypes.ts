@@ -119,6 +119,7 @@ export const PROJECTS_PUBLISH_ONE = 'PROJECTS_PUBLISH_ONE';
 export const PROJECTS_ADD_ONE = 'PROJECTS_ADD_ONE';
 export const PROJECTS_EDIT_ONE = 'PROJECTS_EDIT_ONE';
 export const PROJECTS_DELETE_ONE = 'PROJECTS_DELETE_ONE';
+export const PROJECTS_RESET_STATE = 'PROJECTS_RESET_STATE';
 
 export const PROJECTS_REQUEST_START = 'PROJECTS_REQUEST_START';
 export const PROJECTS_REQUEST_SUCCESS = 'PROJECTS_REQUEST_SUCCESS';
@@ -172,6 +173,10 @@ interface projectsRequestStartActionType {
   payload: requestData;
 }
 
+interface projectsResetStateActionType {
+  type: typeof PROJECTS_RESET_STATE;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -199,4 +204,5 @@ export type ActionTypes =
   | generalsRequestStartActionType
   | projectsRequestStartActionType
   | projectsRequestSuccessActionType
-  | projectsRequestFailActionType;
+  | projectsRequestFailActionType
+  | projectsResetStateActionType;

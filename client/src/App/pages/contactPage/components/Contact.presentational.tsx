@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import Subtitle from '../../common/Subtitle/Subtitle';
-import Text from '../../common/Text/Text';
-import Link from '../../common/Link/Link';
+import Subtitle from '../../../common/Subtitle/Subtitle';
+import Text from '../../../common/Text/Text';
+import Link from '../../../common/Link/Link';
 
 import { stateToProps } from './ContactContainer';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageSecondaryLayout from '../layout/PageSecondaryLayout';
+import PageSecondaryLayout from '../../layout/PageSecondaryLayout';
 import AboutComponent from './components/AboutContainer';
 
 const About = () => {

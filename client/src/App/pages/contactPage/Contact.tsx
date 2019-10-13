@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 
-import PageContainer from '../common/PageContainer/PageContainer';
+import PageContainer from '../../common/PageContainer/PageContainer';
 import ContactComponent from './components/ContactContainer';
 
-import Title from '../common/Title/Title';
+import Title from '../../common/Title/Title';
 
 export default class Contact extends Component {
   render() {

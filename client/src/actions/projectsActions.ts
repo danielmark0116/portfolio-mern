@@ -73,6 +73,10 @@ export const projectsRequestFail = (errMsg: string = ''): ActionTypes => ({
   }
 });
 
+export const projectsResetState = (): ActionTypes => ({
+  type: types.PROJECTS_RESET_STATE
+});
+
 // THUNKS
 export const projectsGetAllThunk = () => {
   return async (dispatch: Dispatch<ActionTypes>) => {

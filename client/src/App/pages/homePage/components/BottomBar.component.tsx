@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 
-import BottomBarContainer from '../../common/BottomBar/BottomBar';
-import Link from '../../common/Link/Link';
-import FlexCenter from '../../common/FlexCenter/FlexCenter';
+import BottomBarContainer from '../../../common/BottomBar/BottomBar';
+import Link from '../../../common/Link/Link';
+import FlexCenter from '../../../common/FlexCenter/FlexCenter';
 
 import 'bootstrap/dist/css/bootstrap-grid.css';
 

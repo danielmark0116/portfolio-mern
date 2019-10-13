@@ -15,6 +15,7 @@ interface IProps {
   goBackBtnText: string;
   pageTitle: string;
   redirectPath: string;
+  columns: 1 | 2;
 }
 
 interface IState {
@@ -25,7 +26,8 @@ export default class PageSecondaryLayout extends Component<IProps, IState> {
   static defaultProps = {
     goBackBtnText: 'HOME',
     pageTitle: 'TITLE',
-    redirectPath: '/'
+    redirectPath: '/',
+    columns: 2
   };
 
   nodeRef = React.createRef<HTMLDivElement>();
@@ -52,25 +54,52 @@ export default class PageSecondaryLayout extends Component<IProps, IState> {
     });
   };
 
+  oneColumnLayout = () => {
+    const { children, pageTitle } = this.props;
+
+    return (
+      <PageContainer spaced={true} fluid={false}>
+        <Fragment>
+          {pageTitle.length > 0 && <Title align="center">{pageTitle}</Title>}
+          {children}
+        </Fragment>
+      </PageContainer>
+    );
+  };
+
+  twoColumnsLayout = () => {
+    const { children, pageTitle } = this.props;
+
+    return (
+      <PageContainer spaced={true} fluid={false}>
+        <div className="row" style={{ margin: '0' }}>
+          <Col lg="4" md="12">
+            <Title align="right">{pageTitle}</Title>
+          </Col>
+          <Col lg="8" md="12" style={{ margin: '0', padding: '0' }}>
+            {children}
+          </Col>
+        </div>
+      </PageContainer>
+    );
+  };
+
   render() {
     const { redirect } = this.state;
-    const { children, goBackBtnText, pageTitle, redirectPath } = this.props;
+    const {
+      children,
+      goBackBtnText,
+      pageTitle,
+      redirectPath,
+      columns
+    } = this.props;
 
     return (
       <Fragment>
         {redirect && <Redirect push={true} to={redirectPath} />}
         <GoBackBtn action={this.handleRedirect}>{goBackBtnText}</GoBackBtn>
         <div ref={this.nodeRef}>
-          <PageContainer spaced={true} fluid={false}>
-            <div className="row" style={{ margin: '0' }}>
-              <Col lg="4" md="12">
-                <Title align="right">{pageTitle}</Title>
-              </Col>
-              <Col lg="8" md="12" style={{ margin: '0', padding: '0' }}>
-                {children}
-              </Col>
-            </div>
-          </PageContainer>
+          {columns === 2 ? this.twoColumnsLayout() : this.oneColumnLayout()}
         </div>
       </Fragment>
     );

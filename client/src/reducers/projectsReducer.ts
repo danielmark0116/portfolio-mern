@@ -9,6 +9,12 @@ export const selectorProjectsGetAll = (state: AppState): projectData[] => {
   return state.projects.projects;
 };
 
+export const selectorProjectsFilterPublished = (
+  state: AppState
+): projectData[] => {
+  return state.projects.projects.filter(project => project.published === true);
+};
+
 export const selectorProjectsGetOne = (
   state: AppState
 ): projectDataElements => {
@@ -59,6 +65,8 @@ export function projectsReducer(
         ...state,
         projects: state.projects.filter(pro => pro._id !== action.payload)
       };
+    case types.PROJECTS_RESET_STATE:
+      return { ...state, project: [], singleProject: {} };
     case types.PROJECTS_REQUEST_START:
       return { ...state, requestData: action.payload };
     case types.PROJECTS_REQUEST_SUCCESS:

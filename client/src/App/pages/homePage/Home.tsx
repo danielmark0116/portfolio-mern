@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Background from '../common/Background/Background';
-import Title from '../common/Title/Title';
-import Logo from '../common/Logo/Logo';
-import SocialIcons from '../common/SocialIcons/SocialIconsContainer';
-import Navbar from '../common/Navbar/Navbar';
+import Background from '../../common/Background/Background';
+import Title from '../../common/Title/Title';
+import Logo from '../../common/Logo/Logo';
+import SocialIcons from '../../common/SocialIcons/SocialIconsContainer';
+import Navbar from '../../common/Navbar/Navbar';
 import BottomBar from './components/BottomBar.component';
 import Subtitle from './components/SubtitleContainer';
 
-import { pageInBounce } from '../animations/whole_page_in_out';
+import { pageInBounce } from '../../animations/whole_page_in_out';
 
-import style from '../styles/main.module.scss';
+import style from '../../styles/main.module.scss';
 
 interface IState {
   redirectPath: string;

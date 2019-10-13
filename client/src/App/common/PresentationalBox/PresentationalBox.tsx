@@ -8,16 +8,19 @@ import {
 } from '../../animations/presentational_box_transition';
 import { fadeInDown } from '../../animations/fades';
 
-import Pic from '../../assets/portfolio-preview.png';
-
 import style from '../../styles/main.module.scss';
 
 interface IProps {
   index: number;
+  projectTitle?: any;
+  projectShortDesc?: any;
+  projectPic?: any;
+  projectId?: any;
 }
 
 interface IState {
   redirect: Boolean;
+  triggeredRedirect: Boolean;
 }
 
 export default class PresentationalBox extends Component<IProps, IState> {
@@ -29,7 +32,8 @@ export default class PresentationalBox extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      redirect: false
+      redirect: false,
+      triggeredRedirect: false
     };
   }
 
@@ -43,13 +47,17 @@ export default class PresentationalBox extends Component<IProps, IState> {
   mouseEnter = () => {
     const hoverNode = this.transitionRef.current;
     const picNode = this.picRef.current;
-    hover(hoverNode, picNode);
+    const { triggeredRedirect } = this.state;
+
+    !triggeredRedirect && hover(hoverNode, picNode);
   };
 
   mouseLeave = () => {
     const hoverNode = this.transitionRef.current;
     const picNode = this.picRef.current;
-    endHover(hoverNode, picNode);
+    const { triggeredRedirect } = this.state;
+
+    !triggeredRedirect && endHover(hoverNode, picNode);
   };
 
   handleClick = () => {
@@ -57,6 +65,10 @@ export default class PresentationalBox extends Component<IProps, IState> {
     const hoverNodeMobile = this.transitionRefMobile.current;
     const boxNode = this.boxRef.current;
     const picNode = this.picRef.current;
+
+    this.setState({
+      triggeredRedirect: true
+    });
 
     pageOut(hoverNode, boxNode, hoverNodeMobile, picNode, () =>
       this.handleRedirect()
@@ -71,23 +83,30 @@ export default class PresentationalBox extends Component<IProps, IState> {
 
   render() {
     const { redirect } = this.state;
+    const {
+      projectTitle,
+      projectShortDesc,
+      projectPic,
+      projectId
+    } = this.props;
 
     return (
       <div
+        key={this.props.index}
         ref={this.boxRef}
         className={style.presentational_box}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
         onClick={this.handleClick}
       >
-        {redirect && <Redirect push to="/work/123testoweid" />}
+        {redirect && <Redirect push to={`/work/${projectId}`} />}
         <div ref={this.transitionRef} className={style.hover_box}>
-          <h2>my personal portfolio website</h2>
+          <h2>{projectShortDesc}</h2>
           <p>click for more info</p>
-          <h1>portfolio</h1>
+          <h1>{projectTitle}</h1>
         </div>
         <div ref={this.picRef} className={style.background}>
-          <img src={Pic} alt="" />
+          <img src={`data:image/jpeg;base64,${projectPic}`} alt="" />
         </div>
         <div
           ref={this.transitionRefMobile}
