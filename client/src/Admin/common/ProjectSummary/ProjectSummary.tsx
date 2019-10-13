@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const ProjectSummary = (props: IProps) => {
-  const { title, tags, short_desc, category, published, _id } = props.project;
+  const { title, tags, short_desc, published, _id } = props.project;
   const { publish, deleteProject } = props;
 
   return (

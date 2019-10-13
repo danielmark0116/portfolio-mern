@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { stateToProps, dispatchToProps } from './ProjectFormContainer';
+import { Redirect } from 'react-router-dom';
 
 import Title from '../../common/Title/Title';
+import Subtitle from '../../common/Subtitle/Subtitle';
 import Form from '../../common/Form/Form';
 import FileInput from '../../common/FileInput/FileInput';
 
@@ -14,6 +16,7 @@ interface IState {
   pageTitle: string;
   file: FileList | null;
   withPic: Boolean;
+  redirect: Boolean;
 }
 
 export default class ProjectForm extends Component<Props, IState> {
@@ -23,7 +26,8 @@ export default class ProjectForm extends Component<Props, IState> {
       test: 'any',
       pageTitle: this.props.edit ? 'Edit' : 'Add new',
       file: null,
-      withPic: true
+      withPic: true,
+      redirect: false
     };
   }
 
@@ -46,6 +50,8 @@ export default class ProjectForm extends Component<Props, IState> {
       file: files
     });
   };
+
+  handleCancelRedirect = () => this.setState({ redirect: true });
 
   formAlert = () => {
     alert('Invalid form. Double check it');
@@ -74,11 +80,12 @@ export default class ProjectForm extends Component<Props, IState> {
 
   editForm = () => {
     const { singleProject, edit } = this.props;
-    const { pageTitle, withPic } = this.state;
+    const { pageTitle, withPic, redirect } = this.state;
 
     return (
       <Fragment>
-        <Title>{pageTitle}</Title>
+        <Subtitle>{pageTitle}</Subtitle>
+        {edit && <Title>{singleProject.title || ''}</Title>}
         {edit && (
           <button onClick={this.handleFileSwitch}>
             {JSON.stringify(withPic)}
@@ -147,9 +154,9 @@ export default class ProjectForm extends Component<Props, IState> {
             }
           ]}
           submitAction={this.handleSubmit}
-          cancelAction={() => {}}
+          cancelAction={() => this.handleCancelRedirect()}
         />
-        {/* <img src={`data:image/jpeg;base64,${singleProject.pic}`} alt="" /> */}
+        {redirect && <Redirect push to="/admin/projects" />}
       </Fragment>
     );
   };
@@ -160,7 +167,7 @@ export default class ProjectForm extends Component<Props, IState> {
 
     if (!edit) return this.editForm();
     if (!pending && success && singleProject && !error) return this.editForm();
-
+    if (error) return <h4>sth went wrong</h4>;
     return <div>loading</div>;
   }
 }

@@ -4,11 +4,10 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import ProjectForm from './ProjectForm';
 import { AppState } from '../../../store';
 import {
-  selectorProjectsGetAll,
   selectorProjectsRequestData,
   selectorProjectsGetOne
 } from '../../../reducers/projectsReducer';
-import { projectData, projectDataElements } from '../../../types/projectData';
+import { projectDataElements } from '../../../types/projectData';
 import { ThunkDispatch } from 'redux-thunk';
 import { ActionTypes } from '../../../actions/actionTypes';
 import {
