@@ -6,6 +6,7 @@ import Title from '../../common/Title/Title';
 import Subtitle from '../../common/Subtitle/Subtitle';
 import Form from '../../common/Form/Form';
 import FileInput from '../../common/FileInput/FileInput';
+import Switch from '../../common/Switch/Switch';
 
 import { parseFormData } from '../../../utils/parseFormData';
 import { isAnyInputEmpty } from '../../../utils/emptyFormValidate';
@@ -13,7 +14,6 @@ import { isAnyInputEmpty } from '../../../utils/emptyFormValidate';
 type Props = stateToProps & dispatchToProps;
 
 interface IState {
-  test: any;
   pageTitle: string;
   file: FileList | null;
   withPic: Boolean;
@@ -25,10 +25,9 @@ export default class ProjectForm extends Component<Props, IState> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      test: 'any',
-      pageTitle: this.props.edit ? 'Edit' : 'Add new',
+      pageTitle: this.props.edit ? 'Edit' : 'Add new project',
       file: null,
-      withPic: true,
+      withPic: this.props.edit ? false : true,
       redirect: false,
       formInvalid: false
     };
@@ -97,12 +96,15 @@ export default class ProjectForm extends Component<Props, IState> {
       <Fragment>
         <Subtitle>{pageTitle}</Subtitle>
         {edit && <Title>{singleProject.title || ''}</Title>}
-        {edit && (
-          <button onClick={this.handleFileSwitch}>
-            {JSON.stringify(withPic)}
-          </button>
-        )}
         <br />
+        {edit && (
+          <Switch
+            active={withPic}
+            action={this.handleFileSwitch}
+            inactiveText="change pic"
+            activeText="do not change pic"
+          />
+        )}
         {withPic && <FileInput action={this.handleFile} error={formInvalid} />}
         <Form
           formInvalid={formInvalid}
