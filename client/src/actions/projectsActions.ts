@@ -150,6 +150,7 @@ export const projectsAddOneThunk = (data: FormData) => {
       });
 
       dispatch(projectsAddOne());
+      alert('Added Project');
       dispatch(projectsRequestSuccess('Added new project'));
     } catch (err) {
       dispatch(projectsRequestFail(err.message));

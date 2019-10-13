@@ -11,6 +11,7 @@ interface IProps {
   extended?: Boolean;
   callback: Function;
   name: string;
+  error: Boolean;
 }
 
 interface IState {
@@ -21,6 +22,7 @@ class TextInput extends Component<IProps, IState> {
   static defaultProps = {
     value: '',
     extended: false,
+    error: false,
     callback: () => null
   };
 
@@ -74,11 +76,14 @@ class TextInput extends Component<IProps, IState> {
   };
 
   render() {
-    const { extended } = this.props;
+    const { extended, error } = this.props;
     const { inputValue } = this.state;
 
     return (
-      <div className={style.text_input_container}>
+      <div
+        className={style.text_input_container}
+        style={error && inputValue === '' ? { border: '2px solid red' } : {}}
+      >
         {extended ? (
           <div className={style.text_input_medium_container}>
             <Editor

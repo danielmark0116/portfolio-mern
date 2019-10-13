@@ -8,6 +8,7 @@ import Form from '../../common/Form/Form';
 import FileInput from '../../common/FileInput/FileInput';
 
 import { parseFormData } from '../../../utils/parseFormData';
+import { isAnyInputEmpty } from '../../../utils/emptyFormValidate';
 
 type Props = stateToProps & dispatchToProps;
 
@@ -17,6 +18,7 @@ interface IState {
   file: FileList | null;
   withPic: Boolean;
   redirect: Boolean;
+  formInvalid: Boolean;
 }
 
 export default class ProjectForm extends Component<Props, IState> {
@@ -27,7 +29,8 @@ export default class ProjectForm extends Component<Props, IState> {
       pageTitle: this.props.edit ? 'Edit' : 'Add new',
       file: null,
       withPic: true,
-      redirect: false
+      redirect: false,
+      formInvalid: false
     };
   }
 
@@ -58,29 +61,37 @@ export default class ProjectForm extends Component<Props, IState> {
   };
 
   handleSubmit = (input: any) => {
-    const { withPic, file } = this.state;
+    const { withPic, file, formInvalid } = this.state;
     const { edit, editProject, addProject, singleProject } = this.props;
+
+    this.setState({ formInvalid: isAnyInputEmpty(input) });
 
     if (!edit || withPic) {
       if (file) {
         const formData = parseFormData(input);
         formData.set('pic', file[0]);
 
-        withPic && edit && editProject(singleProject._id, formData, true);
-        !edit && addProject(formData);
+        withPic &&
+          edit &&
+          !isAnyInputEmpty(input) &&
+          editProject(singleProject._id, formData, true);
+        !edit && !isAnyInputEmpty(input) && addProject(formData);
       } else {
+        this.setState({ formInvalid: true });
         this.formAlert();
       }
     } else {
       const formData = parseFormData(input);
 
-      editProject(singleProject._id, formData, false);
+      !isAnyInputEmpty(input)
+        ? editProject(singleProject._id, formData, false)
+        : this.formAlert();
     }
   };
 
   editForm = () => {
     const { singleProject, edit } = this.props;
-    const { pageTitle, withPic, redirect } = this.state;
+    const { pageTitle, withPic, redirect, formInvalid } = this.state;
 
     return (
       <Fragment>
@@ -92,8 +103,9 @@ export default class ProjectForm extends Component<Props, IState> {
           </button>
         )}
         <br />
-        {withPic && <FileInput action={this.handleFile} />}
+        {withPic && <FileInput action={this.handleFile} error={formInvalid} />}
         <Form
+          formInvalid={formInvalid}
           spaced={true}
           inputs={[
             {

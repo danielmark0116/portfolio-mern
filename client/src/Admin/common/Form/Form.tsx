@@ -17,6 +17,7 @@ interface IProps {
   cancelAction: Function;
   formData: Boolean;
   spaced: Boolean;
+  formInvalid: Boolean;
 }
 
 interface IState {
@@ -26,7 +27,8 @@ interface IState {
 class Form extends Component<IProps, IState> {
   static defaultProps = {
     formData: false,
-    spaced: false
+    spaced: false,
+    formInvalid: false
   };
 
   constructor(props: IProps) {
@@ -58,7 +60,7 @@ class Form extends Component<IProps, IState> {
   };
 
   render() {
-    const { inputs, spaced } = this.props;
+    const { inputs, spaced, formInvalid } = this.props;
 
     return (
       <Fragment>
@@ -75,6 +77,7 @@ class Form extends Component<IProps, IState> {
                 <label className={style.form_label}>{input.label}</label>
               )}
               <TextInput
+                error={formInvalid}
                 name={input.fieldName}
                 extended={input.extended}
                 value={input.initValue}

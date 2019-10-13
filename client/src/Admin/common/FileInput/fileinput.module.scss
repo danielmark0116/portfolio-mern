@@ -1,0 +1,9 @@
+.file_input {
+  font-family: inherit !important;
+  padding: 10px;
+
+  &.danger {
+    border: 2px solid red;
+    color: red;
+  }
+}
