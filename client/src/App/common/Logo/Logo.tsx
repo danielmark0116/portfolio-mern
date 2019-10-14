@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import LogoLarge from '../../assets/logo@2x.png';
+import LogoLarge from '../../assets/portfolioColoredLogo@2x.png';
 
 import { fadeIn as animation } from '../../animations/fades';
 import style from '../../styles/main.module.scss';
