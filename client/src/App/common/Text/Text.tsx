@@ -4,8 +4,6 @@ import HTMLParser from 'react-html-parser';
 
 import { fadeIn as animation } from '../../animations/fades';
 
-import textStyle2 from './text.module.scss';
-
 import textStyle from '../../styles/main.module.scss';
 
 interface IProps {
@@ -19,6 +17,7 @@ interface IProps {
 
 export default function Text(props: IProps) {
   const { children, align, htmlParse, html } = props;
+
   const styles = {
     textAlign: align,
     margin: '0 0 10px'

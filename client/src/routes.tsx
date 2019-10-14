@@ -11,8 +11,8 @@ import AdminProjectForm from './Admin/features/ProjectForm/ProjectFormContainer'
 import PageLayout from './App/layout/PageLayout';
 import Home from './App/pages/homePage/Home';
 import Contact from './App/pages/contactPage/Contact';
-import Work from './App/pages/worksPage/Works';
-import Work2 from './App/pages/workPage/Work';
+import Works from './App/pages/worksPage/Works';
+import Work from './App/pages/workPage/Work';
 import About from './App/pages/aboutPage/About';
 import ImageTest from './App/ImageTest';
 
@@ -48,10 +48,10 @@ const AppRoutes = () => {
           <Home></Home>
         </Route>
         <Route exact path="/work/:id">
-          <Work2></Work2>
+          <Work></Work>
         </Route>
         <Route exact path="/work">
-          <Work></Work>
+          <Works></Works>
         </Route>
         <Route exact path="/image">
           <ImageTest></ImageTest>

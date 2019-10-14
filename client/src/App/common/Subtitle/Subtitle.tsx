@@ -12,6 +12,7 @@ interface IProps {
 
 export default function Subtitle(props: IProps) {
   const { children, align } = props;
+
   const styles = {
     textAlign: align,
     margin: '0 0 40px'
