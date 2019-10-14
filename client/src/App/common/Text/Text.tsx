@@ -4,7 +4,9 @@ import HTMLParser from 'react-html-parser';
 
 import { fadeIn as animation } from '../../animations/fades';
 
-import textStyle from './text.module.scss';
+import textStyle2 from './text.module.scss';
+
+import textStyle from '../../styles/main.module.scss';
 
 interface IProps {
   children?: React.ReactNode;

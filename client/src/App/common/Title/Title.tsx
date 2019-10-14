@@ -3,19 +3,20 @@ import { Fragment } from 'react';
 
 import { fadeIn as animation } from '../../animations/fades';
 
+import style from '../../styles/main.module.scss';
+
 interface IProps {
   children?: React.ReactNode;
   align?: 'center' | 'left' | 'right';
   animate?: Boolean;
   fadeDelay?: number;
-  isSpaced?: Boolean;
+  isSpaced: Boolean;
 }
 
 export default function Title(props: IProps) {
   const { children, align, isSpaced } = props;
 
-  const spacedStyles = { textAlign: align, margin: '0 30px 80px' };
-  const nonSpacedStyles = { textAlign: align, margin: '0 30px 20px' };
+  const alignStyles = { textAlign: align };
 
   const titleRef = React.createRef<HTMLHeadingElement>();
 
@@ -27,14 +28,18 @@ export default function Title(props: IProps) {
 
   return (
     <Fragment>
-      <h1 ref={titleRef} style={nonSpacedStyles}>
+      <h1
+        ref={titleRef}
+        style={alignStyles}
+        className={isSpaced && style.spaced}
+      >
         {children}
       </h1>
     </Fragment>
   );
 }
 
-Title.deafultProps = {
+Title.defaultProps = {
   children: 'Your text here...',
   align: 'center',
   animate: false,

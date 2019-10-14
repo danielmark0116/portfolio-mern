@@ -1,0 +1,15 @@
+.parsed_html_container {
+  margin: 0;
+  padding: 0;
+
+  @include tablets {
+    // padding: 0 5px;
+  }
+
+  p {
+    &:first-of-type {
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+}

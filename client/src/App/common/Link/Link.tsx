@@ -5,7 +5,7 @@ import style from '../../styles/main.module.scss';
 interface IProps {
   children: string | React.ReactChild;
   active: Boolean;
-  size: 'small' | 'large';
+  size: 'small' | 'large' | 'xlarge';
   action: Function;
   color: 'blue' | 'purple' | 'dark';
 }
@@ -23,6 +23,8 @@ const Link = (props: IProps) => {
           ? style.link_small
           : size === 'large'
           ? style.link_large
+          : size === 'xlarge'
+          ? style.link_xlarge
           : ''
       } ${active ? style.link_active : ''} ${
         color === 'blue'

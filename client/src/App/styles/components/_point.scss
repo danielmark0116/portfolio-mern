@@ -1,0 +1,55 @@
+$point-size: 25px;
+$point-size-mobile-decrement: 10px;
+
+.point_container {
+  display: flex;
+  align-content: center;
+  text-transform: uppercase;
+  margin: 10px 0 20px;
+  flex-wrap: wrap;
+
+  // @include tablets {
+  //   margin: 10px 5px 20px;
+  // }
+
+  span {
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: $font-light;
+    align-self: center;
+    margin: 5px 0;
+    padding-right: 5px;
+
+    @include phones {
+      font-size: 14px;
+    }
+  }
+
+  .point {
+    display: flex;
+    align-self: center;
+    width: $point-size;
+    height: $point-size;
+    background: $blue;
+    margin: 0 10px 0 0;
+    box-shadow: 2px 4px 0 $light;
+
+    @include phones {
+      width: $point-size - $point-size-mobile-decrement;
+      height: $point-size - $point-size-mobile-decrement;
+    }
+  }
+
+  .point_title {
+    display: inline-flex;
+    align-self: center;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding-right: 10px;
+
+    @include phones {
+      font-size: 14px;
+    }
+  }
+}

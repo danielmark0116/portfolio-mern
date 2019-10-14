@@ -1,0 +1,24 @@
+$tag-color-scheme: $dark;
+
+.tag_box {
+  padding: 5px 10px;
+  margin: 5px 10px 10px 0;
+  border: 1px solid $tag-color-scheme;
+  color: $tag-color-scheme;
+  background: $white;
+  font-weight: $font-light;
+  text-transform: uppercase;
+  font-size: 14px;
+  display: inline;
+  border-radius: 5px;
+
+  // @include tablets {
+  //   margin: 5px 10px;
+  // }
+
+  @include phones {
+    // margin: 5px 10px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}

@@ -13,6 +13,7 @@
 @import 'grid/flex_grid';
 
 // COMPONENTS
+@import 'components/page_container';
 @import 'components/locked_component';
 @import 'components/main_component';
 @import 'components/background_columns';
@@ -25,6 +26,11 @@
 @import 'components/go_back_btn';
 @import 'components/arrow_btn';
 @import 'components/presentational_box';
+@import 'components/jumbo_pic';
+@import 'components/tag';
+@import 'components/point';
+@import 'components/separator';
+@import 'components/text';
 
 body {
   margin: 0;

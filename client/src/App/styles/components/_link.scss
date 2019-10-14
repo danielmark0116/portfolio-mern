@@ -33,6 +33,17 @@
     }
   }
 
+  &_xlarge {
+    @extend .link;
+    font-size: 40px;
+    display: block;
+    margin: 0 0 10px;
+
+    @include phones {
+      font-size: 30px;
+    }
+  }
+
   &.link_blue {
     color: $blue;
   }

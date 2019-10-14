@@ -15,16 +15,17 @@ interface IProps {
   icon: 'instagram' | 'linkedin' | 'github';
   index: number;
   action: Function;
+  renderAnimation: Boolean;
 }
 
 export default function SocialIcon(props: IProps) {
-  const { icon, index, action } = props;
+  const { icon, index, action, renderAnimation } = props;
 
   const iconRef = React.createRef<any>();
   const iconBgRef = React.createRef<any>();
 
   useEffect(() => {
-    btnReveal(iconRef.current, 1.7, index);
+    renderAnimation && btnReveal(iconRef.current, 1.7, index);
   }, []);
 
   let iconToDisplay = '';
@@ -63,5 +64,6 @@ export default function SocialIcon(props: IProps) {
 
 SocialIcon.defaultProps = {
   index: 1,
-  action: () => null
+  action: () => null,
+  renderAnimation: true
 };

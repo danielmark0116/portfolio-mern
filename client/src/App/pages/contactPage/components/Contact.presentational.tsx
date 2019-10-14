@@ -18,24 +18,23 @@ const Contact = (props: Props) => {
       <Text>Email me</Text>
       <Subtitle>{contactData.email}</Subtitle>
       <Text>Or find me here</Text>
-      <Link size="large" color="dark">
+      <Link size="xlarge" color="dark">
         <a href={links.githubLink} target="_blank">
           Github
         </a>
       </Link>
-      <br />
-      <Link size="large" color="blue">
+
+      <Link size="xlarge" color="blue">
         <a href={links.linkedInLink} target="_blank">
           LinkedIN
         </a>
       </Link>
-      <br />
-      <Link size="large" color="purple">
+
+      <Link size="xlarge" color="purple">
         <a href={links.instagramLink} target="_blank">
           Instagram
         </a>
       </Link>
-      <br />
     </Fragment>
   );
 };
