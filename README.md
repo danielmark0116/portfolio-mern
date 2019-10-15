@@ -31,8 +31,10 @@ PORT=whateverPortYouWish
 MODE=development | production
 JWT_SECRET=yourOwnVerySecretKeyNeededForJWTTokens
 clientID=google client ID = for auth
-mongoDG= connection string to mongodb Atlas - needed for production mode, in development mode, app uses local mongo db
+mongoDG= connection string to mongodb Atlas - needed for production mode, in development mode*, app uses local mongo db
 ```
+
+\*remember to have `mongod` running
 
 Also, create another .env file inside client folder
 
