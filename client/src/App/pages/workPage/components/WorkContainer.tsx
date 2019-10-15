@@ -33,8 +33,7 @@ class WorkContainer extends Component<Props, {}> {
     if (projectData && projectData.published && success && !pending && !error)
       return <WorkDetails projectData={projectData} />;
 
-    if (!projectData || error || !projectData.published)
-      return <p>sth went wrong</p>;
+    if (!projectData || error || !projectData.published) return <p></p>;
     if (pending) return <p>loading</p>;
   }
 }
