@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
 
-console.log(process.env);
 console.log(`Running in ${process.env.MODE} mode`);
 
 // CORS & SEC
