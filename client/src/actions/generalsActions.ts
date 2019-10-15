@@ -66,7 +66,7 @@ export const generalsGetAllThunk = () => {
     dispatch(generalsGetAll());
 
     try {
-      let response = await axios.get('/general');
+      let response = await axios.get('/api/general');
       let data = response.data.generals;
 
       dispatch(generalsGetAllSuccess(formatResponse(data)));
@@ -85,7 +85,7 @@ export const generalsUpdateThunk = (data: generalsDataElements) => {
     updateToken();
 
     try {
-      let response = await axios.put('/general', data);
+      let response = await axios.put('/api/general', data);
       let resData = await response.data.response;
 
       dispatch(generalsUpdateSuccess(formatResponse(resData)));

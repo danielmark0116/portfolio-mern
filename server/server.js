@@ -1,7 +1,11 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
+
+console.log(process.env);
+console.log(`Running in ${process.env.MODE} mode`);
 
 // CORS & SEC
 const cors = require('cors');
@@ -16,9 +20,8 @@ generalPopulate.populate();
 
 //  PASSPORT
 const passport = require('passport');
-const googleOAuthSettings = require('./utils/google_strategy.passport');
+// const googleOAuthSettings = require('./utils/google_strategy.passport');
 const jwtStrategySetting = require('./utils/jwt_strategy.controller');
-require('dotenv').config();
 
 // APP SETTINGS
 app.use(cors());
@@ -30,46 +33,22 @@ app.use(passport.session());
 
 // DB CONNECT & INIT passport
 db.dbConnection();
-googleOAuthSettings.initGoogleOAuth();
+// googleOAuthSettings.initGoogleOAuth();
 jwtStrategySetting.initJwtStrategy();
 
 // ROUTES
 const projectRoutes = require('./routes/project.routes');
 const authRoutes = require('./routes/auth.routes');
 const generalRoutes = require('./routes/general.routes');
-// const imageRoutes = require('./routes/imageTest.routes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/general', generalRoutes);
 app.use('/api/project', projectRoutes);
-// app.use('/api/image', imageRoutes);
-app.get(
-  '/secret',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    res.json({
-      auth: true
-    });
-  }
-);
-
-const isAdmin = require('./controller/isAdmin.controller');
-
-app.get(
-  '/secret/admin',
-  passport.authenticate('jwt', { session: false }),
-  isAdmin,
-  (req, res) => {
-    res.json({
-      auth: true
-    });
-  }
-);
 
 if (process.env.MODE === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/public/')));
+  app.use(express.static(path.join(__dirname, '../client/build/')));
   app.use('/', (req, res) => {
-    res.render('index');
+    res.sendFile(path.join(__dirname, '/../client/build/index.html'));
   });
 } else {
   app.use('/', (req, res) => {

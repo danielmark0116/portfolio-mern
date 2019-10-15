@@ -20,7 +20,7 @@ const LoginBox = (props: IProps) => {
         </FlexCenter>
         <FlexCenter>
           <GoogleLogin
-            clientId="181363774029-vd1cnl65r2cjrcghd348uds0eg9dksqc.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}
             buttonText="Login"
             onSuccess={response => handleLogin(response)}
             onFailure={() => null}

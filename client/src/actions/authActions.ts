@@ -101,7 +101,7 @@ export const authLoginThunk = (googleResponseData: googleResponseData) => {
     dispatch(authRequestStart('Login start'));
     dispatch(authLogin());
     try {
-      let response = await axios.post('/auth/login/google', userData);
+      let response = await axios.post('/api/auth/login/google', userData);
       let data = await response.data;
 
       Cookie.set('googleAuthToken', response.data.token);

@@ -84,7 +84,7 @@ export const projectsGetAllThunk = () => {
     updateToken();
 
     try {
-      let response = await axios.get('/project');
+      let response = await axios.get('/api/project');
 
       dispatch(projectsGetAll(response.data.response));
       dispatch(projectsRequestSuccess('Fetched all projects'));
@@ -99,7 +99,7 @@ export const projectsGetOnlyPublishedThunk = () => {
     dispatch(projectsRequestStart('Fetch only published projects'));
 
     try {
-      let response = await axios.get('/project/published');
+      let response = await axios.get('/api/project/published');
 
       dispatch(projectsGetOnlyPublished(response.data.response));
       dispatch(projectsRequestSuccess('Fetched only published projects'));
@@ -115,7 +115,7 @@ export const projectsGetOneByIdThunk = (id: string) => {
     dispatch(projectsRequestStart('Fetch one project by ID'));
 
     try {
-      let response = await axios.get(`/project/${id}`);
+      let response = await axios.get(`/api/project/${id}`);
 
       dispatch(projectsGetOne(response.data.response));
       dispatch(projectsRequestSuccess('Fetched one project by ID'));
@@ -131,7 +131,7 @@ export const projectsPublishOneThunk = (id: string) => {
     dispatch(projectsRequestStart('Publish one project'));
 
     try {
-      let response = await axios.patch(`/project/publish/${id}`);
+      let response = await axios.patch(`/api/project/publish/${id}`);
 
       dispatch(projectsPublishOne(response.data.response));
       dispatch(projectsRequestSuccess('Published one project'));
@@ -149,7 +149,7 @@ export const projectsAddOneThunk = (data: FormData) => {
     try {
       dispatch(projectsRequestStart('Add new project'));
 
-      await axios.post('/project', data, {
+      await axios.post('/api/project', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -174,11 +174,11 @@ export const projectsEditOneThunk = (
       dispatch(projectsRequestStart('Edit one project'));
 
       if (withPic) {
-        await axios.put(`/project/${id}/withPic`, data, {
+        await axios.put(`/api/project/${id}/withPic`, data, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       } else {
-        await axios.put(`/project/${id}`, data, {
+        await axios.put(`/api/project/${id}`, data, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       }
@@ -199,7 +199,7 @@ export const projectsDeleteByIdThunk = (id: string) => {
     updateToken();
 
     try {
-      await axios.delete(`/project/${id}`);
+      await axios.delete(`/api/project/${id}`);
 
       dispatch(projectsDeleteOne(id));
       dispatch(projectsRequestSuccess('Deleted by id'));

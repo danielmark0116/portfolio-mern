@@ -9,7 +9,7 @@ const LogoutBox = (props: any) => {
   return (
     <Fragment>
       <GoogleLogout
-        clientId="181363774029-vd1cnl65r2cjrcghd348uds0eg9dksqc.apps.googleusercontent.com"
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}
         buttonText="Logout"
         onLogoutSuccess={() => {
           Cookie.remove('googleAuthToken');
