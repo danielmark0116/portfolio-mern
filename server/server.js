@@ -45,7 +45,7 @@ app.use('/api/general', generalRoutes);
 app.use('/api/project', projectRoutes);
 
 if (process.env.MODE === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build/')));
+  app.use(express.static(path.join(__dirname, '/../client/build/')));
   app.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/../client/build/index.html'));
   });
