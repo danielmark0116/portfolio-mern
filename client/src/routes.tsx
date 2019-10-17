@@ -7,6 +7,8 @@ import AdminRoot from './Admin/AdminRoot';
 import AdminHome from './Admin/pages/Home';
 import AdminProjects from './Admin/pages/Projects';
 import AdminProjectForm from './Admin/features/ProjectForm/ProjectFormContainer';
+import AdminPosts from './Admin/pages/Posts';
+import AdminPostForm from './Admin/features/PostForm/PostFormContainer';
 
 import PageLayout from './App/layout/PageLayout';
 import Home from './App/pages/homePage/Home';
@@ -31,6 +33,15 @@ const AdminRoutes = () => {
         </Route>
         <Route exact path="/admin/projects/edit/:id">
           <AdminProjectForm edit={true}></AdminProjectForm>
+        </Route>
+        <Route exact path="/admin/posts">
+          <AdminPosts></AdminPosts>
+        </Route>
+        <Route exact path="/admin/posts/add">
+          <AdminPostForm picDisable={true} edit={false}></AdminPostForm>
+        </Route>
+        <Route exact path="/admin/posts/edit/:id">
+          <AdminPostForm picDisable={true} edit={true}></AdminPostForm>
         </Route>
         <Route path="*">
           <PageNotFound></PageNotFound>

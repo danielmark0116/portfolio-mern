@@ -15,6 +15,7 @@ import {
   projectsDeleteByIdThunk,
   projectsGetAllThunk
 } from './actions/projectsActions';
+import { postsGetAllThunk, postsGetOneByIdThunk } from './actions/postsActions';
 
 const Root = () => (
   <BrowserRouter>
@@ -33,15 +34,7 @@ store.dispatch(generalsGetAllThunk());
 
 store.dispatch(projectsGetOnlyPublishedThunk());
 
-// store.dispatch(projectsGetAllThunk());
-
 store.dispatch(projectsGetOneByIdThunk('5da0f736caa7cc0a2114d75f'));
-
-// store.dispatch(projectsPublishOneThunk('5da0f736caa7cc0a2114d75f'));
-
-// setTimeout(() => {
-//   store.dispatch(projectsDeleteByIdThunk('5da1ed9f1e9a6515b6722e15'));
-// }, 7000);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

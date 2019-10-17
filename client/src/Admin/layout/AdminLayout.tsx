@@ -18,6 +18,10 @@ const links = [
   {
     path: '/admin/projects',
     title: 'projects'
+  },
+  {
+    path: '/admin/posts',
+    title: 'posts'
   }
 ];
 

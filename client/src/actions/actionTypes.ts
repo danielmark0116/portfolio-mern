@@ -2,6 +2,7 @@ import { userData } from '../types/userData';
 import { generalsData } from '../types/generalsData';
 import { projectData } from '../types/projectData';
 import { requestData } from '../types/requestData';
+import { postData, postDataElements } from '../types/postData';
 
 // REQUEST
 export const REQUEST_START = 'REQUEST_START';
@@ -177,6 +178,60 @@ interface projectsResetStateActionType {
   type: typeof PROJECTS_RESET_STATE;
 }
 
+// POSTS ADMIN
+export const POSTS_GET_ALL = 'POSTS_GET_ALL';
+export const POSTS_GET_ONE = 'POSTS_GET_ONE';
+export const POSTS_ADD_ONE = 'POSTS_ADD_ONE';
+export const POSTS_EDIT_ONE = 'POSTS_EDIT_ONE';
+export const POSTS_DELETE_ONE = 'POSTS_DELETE_ONE';
+export const POSTS_RESET_STATE = 'POSTS_RESET_STATE';
+
+export const POSTS_REQUEST_START = 'POSTS_REQUEST_START';
+export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS';
+export const POSTS_REQUEST_FAIL = 'POSTS_REQUEST_FAIL';
+
+interface postsGetAllActionType {
+  type: typeof POSTS_GET_ALL;
+  payload: postData[];
+}
+
+interface postsGetOneActionType {
+  type: typeof POSTS_GET_ONE;
+  payload: projectData;
+}
+
+interface postsAddOneActionType {
+  type: typeof POSTS_ADD_ONE;
+}
+
+interface postsEditOneActionType {
+  type: typeof POSTS_EDIT_ONE;
+}
+
+interface postsDeleteOneActionType {
+  type: typeof POSTS_DELETE_ONE;
+  // payload: string;
+}
+
+interface postsRequestSuccessActionType {
+  type: typeof POSTS_REQUEST_SUCCESS;
+  payload: requestData;
+}
+
+interface postsRequestFailActionType {
+  type: typeof POSTS_REQUEST_FAIL;
+  payload: requestData;
+}
+
+interface postsRequestStartActionType {
+  type: typeof POSTS_REQUEST_START;
+  payload: requestData;
+}
+
+interface postsResetStateActionType {
+  type: typeof POSTS_RESET_STATE;
+}
+
 export type ActionTypes =
   | authCheckActionType
   | authLoginActionType
@@ -205,4 +260,13 @@ export type ActionTypes =
   | projectsRequestStartActionType
   | projectsRequestSuccessActionType
   | projectsRequestFailActionType
-  | projectsResetStateActionType;
+  | projectsResetStateActionType
+  | postsGetAllActionType
+  | postsGetOneActionType
+  | postsAddOneActionType
+  | postsEditOneActionType
+  | postsDeleteOneActionType
+  | postsRequestStartActionType
+  | postsRequestSuccessActionType
+  | postsRequestFailActionType
+  | postsResetStateActionType;
