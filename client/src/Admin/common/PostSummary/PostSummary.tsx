@@ -10,10 +10,12 @@ import Pill from '../Pill/Pill';
 
 interface IProps {
   post: postData;
+  deletePost: Function;
 }
 
 const PostSummary = (props: IProps) => {
   const { title, author, id, content, createdAt, updatedAt } = props.post;
+  const { deletePost } = props;
 
   return (
     <Fragment>
@@ -31,7 +33,7 @@ const PostSummary = (props: IProps) => {
       <br />
       <Pill type="success">{`By: ${author}`}</Pill>
       <TextBox htmlParse={true} html={content}></TextBox>
-      <Button type="secondary" size="small">
+      <Button type="secondary" size="small" action={() => deletePost(id)}>
         Delete
       </Button>
       <hr style={{ margin: '30px 0', opacity: 0.2 }} />

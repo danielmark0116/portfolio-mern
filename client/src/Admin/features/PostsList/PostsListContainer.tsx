@@ -10,7 +10,10 @@ import {
   selectorPostsGetAll,
   selectorPostsRequestData
 } from '../../../reducers/postsReducer';
-import { postsGetAllThunk } from '../../../actions/postsActions';
+import {
+  postsGetAllThunk,
+  postsDeleteOneByIdThunk
+} from '../../../actions/postsActions';
 
 export interface stateToProps {
   posts: postData[];
@@ -19,6 +22,7 @@ export interface stateToProps {
 
 export interface dispatchToProps {
   getAll: Function;
+  deletePost: Function;
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -29,7 +33,8 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, ActionTypes>
 ) => ({
-  getAll: () => dispatch(postsGetAllThunk())
+  getAll: () => dispatch(postsGetAllThunk()),
+  deletePost: (id: string) => dispatch(postsDeleteOneByIdThunk(id))
 });
 
 export default connect(

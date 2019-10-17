@@ -26,8 +26,9 @@ export const postsEditOne = (): ActionTypes => ({
   type: types.POSTS_EDIT_ONE
 });
 
-export const postsDeleteOne = (): ActionTypes => ({
-  type: types.POSTS_DELETE_ONE
+export const postsDeleteOne = (id: string): ActionTypes => ({
+  type: types.POSTS_DELETE_ONE,
+  payload: id
 });
 
 export const postsRequestStart = (msg: string = ''): ActionTypes => ({
@@ -124,6 +125,23 @@ export const postsEditOneByIdThunk = (id: string, input: postDataElements) => {
       dispatch(postsEditOne());
       dispatch(postsRequestSuccess(types.POSTS_EDIT_ONE));
       dispatch(postsGetOneByIdThunk(id));
+    } catch (err) {
+      dispatch(postsRequestFail(err.message));
+    }
+  };
+};
+
+export const postsDeleteOneByIdThunk = (id: string) => {
+  return async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch(postsRequestStart(types.POSTS_DELETE_ONE));
+    updateToken();
+
+    try {
+      let response = await axios.delete(`${postsApiUrl}/post/${id}`);
+
+      alert('Successfully deleted this post');
+      dispatch(postsDeleteOne(id));
+      dispatch(postsRequestSuccess(types.POSTS_DELETE_ONE));
     } catch (err) {
       dispatch(postsRequestFail(err.message));
     }

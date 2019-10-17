@@ -50,6 +50,11 @@ export function postsReducer(
       return { ...state };
     case types.POSTS_EDIT_ONE:
       return { ...state };
+    case types.POSTS_DELETE_ONE:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post.id !== action.payload)
+      };
     case types.POSTS_REQUEST_START:
       return { ...state, requestData: action.payload };
     case types.POSTS_REQUEST_SUCCESS:

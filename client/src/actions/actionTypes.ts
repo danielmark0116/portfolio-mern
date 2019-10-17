@@ -210,7 +210,7 @@ interface postsEditOneActionType {
 
 interface postsDeleteOneActionType {
   type: typeof POSTS_DELETE_ONE;
-  // payload: string;
+  payload: string;
 }
 
 interface postsRequestSuccessActionType {

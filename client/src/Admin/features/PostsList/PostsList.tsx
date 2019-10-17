@@ -9,7 +9,7 @@ interface IProps {}
 type Props = stateToProps & dispatchToProps & IProps;
 
 const PostsList = (props: Props) => {
-  const { getAll, posts } = props;
+  const { getAll, posts, deletePost } = props;
   const { pending, success, error } = props.requestData;
 
   useEffect(() => {
@@ -18,15 +18,21 @@ const PostsList = (props: Props) => {
 
   if (pending) return <Loader></Loader>;
   if (error) return <p>Error</p>;
+  if (!pending && success && !error && posts.length === 0)
+    return <p>No posts...</p>;
   if (!pending && success && !error)
     return (
       <div>
         {posts.map((post, index) => (
-          <PostSummary post={post} key={index}></PostSummary>
+          <PostSummary
+            deletePost={deletePost}
+            post={post}
+            key={index}
+          ></PostSummary>
         ))}
       </div>
     );
-  return <p></p>;
+  return <p>No posts...</p>;
 };
 
 export default PostsList;
