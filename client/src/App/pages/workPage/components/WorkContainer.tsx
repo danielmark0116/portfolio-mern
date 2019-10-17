@@ -12,6 +12,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { ActionTypes } from '../../../../actions/actionTypes';
 import { projectsGetOneByIdThunk } from '../../../../actions/projectsActions';
 import { requestData } from '../../../../types/requestData';
+import Loader from '../../../common/Loader/Loader';
 
 interface IProps {
   id: string;
@@ -33,8 +34,8 @@ class WorkContainer extends Component<Props, {}> {
     if (projectData && projectData.published && success && !pending && !error)
       return <WorkDetails projectData={projectData} />;
 
-    if (!projectData || error || !projectData.published) return <p></p>;
-    if (pending) return <p>loading</p>;
+    if (!projectData || error || !projectData.published) return <p>Error</p>;
+    if (pending) return <Loader></Loader>;
   }
 }
 

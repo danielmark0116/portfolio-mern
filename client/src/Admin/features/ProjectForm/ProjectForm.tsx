@@ -10,6 +10,7 @@ import Switch from '../../common/Switch/Switch';
 
 import { parseFormData } from '../../../utils/parseFormData';
 import { isAnyInputEmpty } from '../../../utils/emptyFormValidate';
+import Loader from '../../common/Loader/Loader';
 
 type Props = stateToProps & dispatchToProps;
 
@@ -182,6 +183,6 @@ export default class ProjectForm extends Component<Props, IState> {
     if (!edit) return this.editForm();
     if (!pending && success && singleProject && !error) return this.editForm();
     if (error) return <h4>sth went wrong</h4>;
-    return <div>loading</div>;
+    return <Loader></Loader>;
   }
 }

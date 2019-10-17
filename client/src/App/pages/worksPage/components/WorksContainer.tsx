@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Works from './Works.presentational';
+import Loader from '../../../common/Loader/Loader';
 
 import { AppState } from '../../../../store';
 import {
@@ -32,10 +33,10 @@ class WorksContainer extends Component<Props, IState> {
     const { pending, success, error } = this.props.requestData;
 
     if (projects.length === 0 && success && !pending && !error)
-      return <p>no projects</p>;
+      return <p>No projects</p>;
     if (!pending && success && !error && projects.length > 0)
       return <Works projects={projects} />;
-    return <p>loading</p>;
+    return <Loader></Loader>;
   }
 }
 

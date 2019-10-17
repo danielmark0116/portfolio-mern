@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { stateToProps, dispatchToProps } from './PostsListContainer';
 
 import PostSummary from '../../common/PostSummary/PostSummary';
+import Loader from '../../common/Loader/Loader';
 
 interface IProps {}
 
@@ -15,9 +16,9 @@ const PostsList = (props: Props) => {
     getAll();
   }, ['']);
 
-  if (pending) {
-    return <div>loading</div>;
-  } else {
+  if (pending) return <Loader></Loader>;
+  if (error) return <p>Error</p>;
+  if (!pending && success && !error)
     return (
       <div>
         {posts.map((post, index) => (
@@ -25,7 +26,7 @@ const PostsList = (props: Props) => {
         ))}
       </div>
     );
-  }
+  return <p></p>;
 };
 
 export default PostsList;

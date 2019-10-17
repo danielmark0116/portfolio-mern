@@ -1,0 +1,13 @@
+.loader_container {
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px auto;
+
+  div {
+    flex: 1 0 50%;
+    background: #1d1d1d;
+  }
+}
