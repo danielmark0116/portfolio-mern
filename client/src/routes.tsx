@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import AppRoot from './App/AppRoot';
 
@@ -64,9 +64,13 @@ const AppRoutes = () => {
         <Route exact path="/work">
           <Works></Works>
         </Route>
-        <Route exact path="/image">
-          <ImageTest></ImageTest>
-        </Route>
+        <Route
+          path="/blog"
+          component={() => {
+            window.location.href = 'https://danielgrychtol.com/blog';
+            return null;
+          }}
+        />
         <Route exact path="/about">
           <About></About>
         </Route>

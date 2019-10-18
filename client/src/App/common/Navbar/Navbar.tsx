@@ -36,7 +36,7 @@ const Links = (props: IPropsLinks) => (
       </NavLink>
     </li>
     <li>
-      <NavLink exact activeStyle={activeLink} to="/blog/">
+      <NavLink exact activeStyle={activeLink} to="/blog">
         BLOG
       </NavLink>
     </li>
