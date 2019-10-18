@@ -86,7 +86,7 @@ const AppRoutes = () => {
 };
 
 const PageNotFound = () => {
-  return <h1>page not found</h1>;
+  return <h1 style={{ marginTop: 180 }}>page not found</h1>;
 };
 
 const Routes = () => {

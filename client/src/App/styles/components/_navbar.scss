@@ -9,7 +9,7 @@ nav.navbar {
   padding: 40px 20px;
   z-index: 200;
 
-  @include phones {
+  @include tablets {
     padding: 20px 0;
   }
 
@@ -33,7 +33,7 @@ nav.navbar {
     }
   }
 
-  @include phones {
+  @include tablets {
     .desktop_menu {
       display: none;
     }
@@ -42,7 +42,7 @@ nav.navbar {
   .mobile_menu {
     display: none;
 
-    @include phones {
+    @include tablets {
       display: block;
     }
 
@@ -58,7 +58,11 @@ nav.navbar {
       right: 0;
       bottom: 0;
       width: 100%;
-      height: 74vh;
+      height: 90vh;
+
+      @include phones {
+        height: 74vh;
+      }
 
       li {
         text-align: center;

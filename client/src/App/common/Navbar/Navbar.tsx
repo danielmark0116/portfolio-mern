@@ -36,6 +36,11 @@ const Links = (props: IPropsLinks) => (
       </NavLink>
     </li>
     <li>
+      <NavLink exact activeStyle={activeLink} to="/blog/">
+        BLOG
+      </NavLink>
+    </li>
+    <li>
       <NavLink exact activeStyle={activeLink} to="/admin">
         ADMIN PANEL
       </NavLink>
