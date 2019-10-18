@@ -32,7 +32,7 @@ class WorksContainer extends Component<Props, IState> {
     const { projects } = this.props;
     const { pending, success, error } = this.props.requestData;
 
-    if (projects.length === 0 && success && !pending && !error)
+    if (projects.length === 0 && !success && !pending && !error)
       return <p>No projects</p>;
     if (!pending && success && !error && projects.length > 0)
       return <Works projects={projects} />;
