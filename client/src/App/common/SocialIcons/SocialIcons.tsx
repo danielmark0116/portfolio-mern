@@ -33,11 +33,11 @@ export default function SocialIcons(props: Props) {
         index={1}
         action={() => window.open(links.githubLink, '_blank')}
       />
-      <SocialIcon
+      {/* <SocialIcon
         icon="linkedin"
         index={2}
         action={() => window.open(links.linkedInLink, '_blank')}
-      />
+      /> */}
       <SocialIcon
         icon="instagram"
         index={3}

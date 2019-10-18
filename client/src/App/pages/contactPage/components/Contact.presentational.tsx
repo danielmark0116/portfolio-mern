@@ -24,11 +24,11 @@ const Contact = (props: Props) => {
         </a>
       </Link>
 
-      <Link size="xlarge" color="blue">
+      {/* <Link size="xlarge" color="blue">
         <a href={links.linkedInLink} target="_blank">
           LinkedIN
         </a>
-      </Link>
+      </Link> */}
 
       <Link size="xlarge" color="purple">
         <a href={links.instagramLink} target="_blank">
