@@ -9,6 +9,13 @@ export const selectorProjectsGetAll = (state: AppState): projectData[] => {
   return state.projects.projects;
 };
 
+export const selectorProjectsOrderValue = (
+  state: AppState,
+  id: string
+): number => {
+  return state.projects.projects.filter(project => project._id === id)[0].order;
+};
+
 export const selectorProjectsFilterPublished = (
   state: AppState
 ): projectData[] => {
@@ -56,6 +63,15 @@ export function projectsReducer(
       return { ...state, singleProject: action.payload };
     case types.PROJECTS_PUBLISH_ONE:
       return { ...state, singleProject: action.payload };
+    case types.PROJECTS_UPDATE_ORDER:
+      return {
+        ...state,
+        projects: state.projects.map(project =>
+          project._id === action.payload.id
+            ? { ...project, order: action.payload.value }
+            : { ...project }
+        )
+      };
     case types.PROJECTS_ADD_ONE:
       return { ...state };
     case types.PROJECTS_EDIT_ONE:

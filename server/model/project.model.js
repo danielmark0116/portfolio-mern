@@ -25,6 +25,11 @@ const Project = new mongoose.Schema(
       required: true,
       default: 'web'
     },
+    order: {
+      type: Number,
+      required: false,
+      default: 0
+    },
     short_desc: {
       type: String,
       required: true

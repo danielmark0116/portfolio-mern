@@ -53,6 +53,13 @@ router.patch(
   projectController.publishProject
 );
 
+router.patch(
+  '/order/:id/:value',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  projectController.updateProjectsOrder
+);
+
 router.delete(
   '/:id',
   passport.authenticate('jwt', { session: false }),

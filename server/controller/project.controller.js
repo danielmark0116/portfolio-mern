@@ -2,7 +2,7 @@ const Project = require('../model/project.model');
 
 exports.getProjects = async (req, res) => {
   try {
-    let response = await Project.find().sort({ createdAt: 'descending' });
+    let response = await Project.find().sort({ order: 'descending' });
 
     res.json({
       response
@@ -19,7 +19,7 @@ exports.getProjects = async (req, res) => {
 exports.getPublishedProjects = async (req, res) => {
   try {
     let response = await Project.find({ published: true }).sort({
-      createdAt: 'descending'
+      order: 'descending'
     });
 
     res.json({
@@ -156,6 +156,29 @@ exports.publishProject = async (req, res) => {
     let editedProject = await Project.findOne({ _id: projectId });
 
     editedProject.published = !editedProject.published;
+
+    let response = await editedProject.save();
+
+    res.json({
+      response
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: true,
+      errorMsg: err.message
+    });
+  }
+};
+
+exports.updateProjectsOrder = async (req, res) => {
+  try {
+    const projectId = req.params.id;
+    const value = parseInt(req.params.value);
+
+    let editedProject = await Project.findOne({ _id: projectId });
+
+    editedProject.order = editedProject.order + value;
 
     let response = await editedProject.save();
 

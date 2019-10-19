@@ -7,6 +7,7 @@ import TextBox from '../TextBox/TextBox';
 import Button from '../Button/Button';
 import ActionBtn from '../ActionBtn/ActionBtn';
 import Pill from '../Pill/Pill';
+import UpdateOrder from '../../features/UpdateOrder/UpdateOrderContainer';
 
 interface IProps {
   project: projectData;
@@ -39,13 +40,13 @@ const ProjectSummary = (props: IProps) => {
         <Pill type="danger">not published</Pill>
       )}
       <TextBox>{short_desc}</TextBox>
-
       <Button size="small" type="primary" action={() => publish(_id)}>
         publish
       </Button>
       <Button size="small" type="secondary" action={() => deleteProject(_id)}>
         Delete
       </Button>
+      <UpdateOrder id={_id}></UpdateOrder>
       <hr style={{ margin: '30px 0', opacity: 0.2 }} />
     </Fragment>
   );

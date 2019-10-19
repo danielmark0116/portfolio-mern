@@ -30,6 +30,14 @@ export const projectsPublishOne = (payload: projectData): ActionTypes => ({
   payload
 });
 
+export const projectsUpdateOrder = (
+  id: string,
+  value: number
+): ActionTypes => ({
+  type: types.PROJECTS_UPDATE_ORDER,
+  payload: { id, value }
+});
+
 export const projectsAddOne = (): ActionTypes => ({
   type: types.PROJECTS_ADD_ONE
 });
@@ -136,6 +144,24 @@ export const projectsPublishOneThunk = (id: string) => {
       dispatch(projectsPublishOne(response.data.response));
       dispatch(projectsRequestSuccess('Published one project'));
       dispatch(projectsGetAllThunk());
+    } catch (err) {
+      dispatch(projectsRequestFail(err.message));
+    }
+  };
+};
+
+export const projectsUpdateOneThunk = (id: string, value: number) => {
+  return async (dispatch: Dispatch<ActionTypes | any>) => {
+    updateToken();
+    dispatch(projectsRequestStart('Update order of project'));
+
+    try {
+      let response = await axios.patch(`/api/project/order/${id}/${value}`);
+      let data = response.data.response;
+
+      dispatch(projectsUpdateOrder(data._id, data.order));
+      dispatch(projectsRequestSuccess('Updated order of project'));
+      // dispatch(projectsGetAllThunk());
     } catch (err) {
       dispatch(projectsRequestFail(err.message));
     }

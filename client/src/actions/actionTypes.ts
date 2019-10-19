@@ -117,6 +117,7 @@ export const PROJECTS_GET_ALL = 'PROJECTS_GET_ALL';
 export const PROJECTS_GET_ONLY_PUBLISHED = 'PROJECTS_GET_ONLY_PUBLISHED';
 export const PROJECTS_GET_ONE = 'PROJECTS_GET_ONE';
 export const PROJECTS_PUBLISH_ONE = 'PROJECTS_PUBLISH_ONE';
+export const PROJECTS_UPDATE_ORDER = 'PROJECTS_UPDATE_ORDER';
 export const PROJECTS_ADD_ONE = 'PROJECTS_ADD_ONE';
 export const PROJECTS_EDIT_ONE = 'PROJECTS_EDIT_ONE';
 export const PROJECTS_DELETE_ONE = 'PROJECTS_DELETE_ONE';
@@ -144,6 +145,14 @@ interface projectsGetOneActionType {
 interface projectsPublishOneActionType {
   type: typeof PROJECTS_PUBLISH_ONE;
   payload: projectData;
+}
+
+interface projectsUpdateOrderActionType {
+  type: typeof PROJECTS_UPDATE_ORDER;
+  payload: {
+    id: string;
+    value: number;
+  };
 }
 
 interface projectsAddOneActionType {
@@ -248,6 +257,7 @@ export type ActionTypes =
   | projectsGetOnlyPublishedActionType
   | projectsGetOneActionType
   | projectsPublishOneActionType
+  | projectsUpdateOrderActionType
   | projectsAddOneActionType
   | projectsEditOneActionType
   | projectsDeleteOneActionType
