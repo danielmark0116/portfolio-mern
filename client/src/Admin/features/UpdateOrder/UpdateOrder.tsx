@@ -20,7 +20,9 @@ const UpdateOrder = (props: Props) => {
       >
         -
       </Button>
-      <div style={{ display: 'inline', margin: '0 10px 0 8px' }}>{orderNo}</div>
+      <div style={{ display: 'inline', margin: '0 10px 0 8px' }}>
+        {props.value}
+      </div>
       <Button
         size="small"
         action={() => {

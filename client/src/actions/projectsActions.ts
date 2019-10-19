@@ -153,14 +153,14 @@ export const projectsPublishOneThunk = (id: string) => {
 export const projectsUpdateOneThunk = (id: string, value: number) => {
   return async (dispatch: Dispatch<ActionTypes | any>) => {
     updateToken();
-    dispatch(projectsRequestStart('Update order of project'));
+    // dispatch(projectsRequestStart('Update order of project'));
 
     try {
       let response = await axios.patch(`/api/project/order/${id}/${value}`);
       let data = response.data.response;
 
       dispatch(projectsUpdateOrder(data._id, data.order));
-      dispatch(projectsRequestSuccess('Updated order of project'));
+      // dispatch(projectsRequestSuccess('Updated order of project'));
       // dispatch(projectsGetAllThunk());
     } catch (err) {
       dispatch(projectsRequestFail(err.message));
