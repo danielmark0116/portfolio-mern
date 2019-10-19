@@ -8,7 +8,7 @@ require('dotenv').config();
 // FROM REACT_GOOGLE
 exports.loginUser = async (req, res) => {
   const googleId = req.body.googleId;
-  const tokenValidMinutes = 60;
+  const tokenValidMinutes = 60 * 3;
 
   try {
     const user = await User.findOne({ googleId });

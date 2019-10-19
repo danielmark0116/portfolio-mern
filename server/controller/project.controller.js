@@ -53,6 +53,7 @@ exports.getOneProject = async (req, res) => {
 exports.postProject = async (req, res) => {
   try {
     let newProject = new Project(req.body);
+    let documentsNumber = await Project.countDocuments();
 
     const fileSizeInMb = req.file.buffer.byteLength * 0.000001;
     const fileType = req.file.mimetype;
@@ -68,6 +69,7 @@ exports.postProject = async (req, res) => {
       newProject.tags = req.body.tags.split(',');
       newProject.technologies = req.body.technologies.split(',');
       newProject.picType = fileType;
+      newProject.order = documentsNumber + 1;
 
       await newProject.save();
 
