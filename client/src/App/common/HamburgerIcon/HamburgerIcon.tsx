@@ -15,7 +15,6 @@ const HamburgerIcon = (props: IProps) => {
       }`}
       onClick={() => {
         props.clickAction();
-        console.log('clicked');
       }}
       style={{ zIndex: 1000 }}
     >

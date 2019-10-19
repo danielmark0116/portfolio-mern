@@ -42,8 +42,12 @@ h2 {
 }
 
 p {
-  font-size: 22px;
-  font-weight: $font-thin;
+  font-size: 18px;
+  font-weight: $font-regular;
+
+  @include tablets {
+    padding: 0 5px;
+  }
 
   @include phones {
     font-size: 18px;

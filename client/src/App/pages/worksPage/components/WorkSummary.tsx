@@ -14,7 +14,7 @@ const WorkSummary = (props: IProps) => {
   const { project, index } = props;
 
   return (
-    <FlexItem key={index} itemsPerRow={3}>
+    <FlexItem itemsPerRow={3}>
       <PresBox
         projectTitle={project.title}
         projectShortDesc={project.short_desc}
