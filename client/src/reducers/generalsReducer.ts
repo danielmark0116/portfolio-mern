@@ -44,10 +44,10 @@ const initState: initState = {
     githubLink: 'http://github.com',
     instagramLink: 'http://instagram.com',
     linkedInLink: 'http://linkedin.com',
-    subtitle: '- -',
+    subtitle: '- web developer -',
     about: '',
-    email: 'mail@mail@gmail.com',
-    phone: '888 999 777'
+    email: 'grychtol.daniel@gmail.com',
+    phone: '691 051 601'
   },
   requestData: {
     error: false,
