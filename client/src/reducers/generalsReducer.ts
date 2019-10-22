@@ -41,8 +41,8 @@ interface initState {
 const initState: initState = {
   generalsData: {
     nameId: 'generals',
-    githubLink: 'http://github.com',
-    instagramLink: 'http://instagram.com',
+    githubLink: 'https://github.com/danielmark0116',
+    instagramLink: 'https://www.instagram.com/danielmark.thedev/',
     linkedInLink: 'http://linkedin.com',
     subtitle: '- web developer -',
     about: '',
