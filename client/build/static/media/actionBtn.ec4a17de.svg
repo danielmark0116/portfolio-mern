@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.232" height="31.232" viewBox="0 0 31.232 31.232">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.292" x2="0.798" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2ca9eb"/>
+      <stop offset="1" stop-color="#007aba"/>
+    </linearGradient>
+    <filter id="Path_3" x="0" y="0" width="31.232" height="31.232" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="BTN" transform="translate(-729.21 -266.194)">
+    <rect id="Rectangle_16" data-name="Rectangle 16" width="23.559" height="23.559" rx="7" transform="translate(733 267)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 729.21, 266.19)" filter="url(#Path_3)">
+      <path id="Path_3-2" data-name="Path 3" d="M1.2,1.629V15.515H0V1.629L.586,0Z" transform="translate(10.55 18.53) rotate(-135)" fill="#f5f5f5" stroke="#f5f5f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>
