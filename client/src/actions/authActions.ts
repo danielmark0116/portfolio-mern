@@ -6,6 +6,11 @@ import Cookie from 'js-cookie';
 import { googleResponseData } from '../types/googleResponseData';
 import { userData } from '../types/userData';
 import jwt from 'jsonwebtoken';
+import {
+  verifyToken,
+  decodeToken,
+  decodeTokenIsAdmin
+} from '../utils/fetchToken';
 
 export const authLogin = (): ActionTypes => ({
   type: types.AUTH_LOGIN
@@ -63,28 +68,17 @@ export const authLoginCheckThunk = () => {
     dispatch(authRequestStart('Login check'));
     dispatch(authCheck());
     const token = Cookie.get('googleAuthToken');
-    const secret = process.env.REACT_APP_JWT_SECRET || '';
 
-    if (!token) {
+    if (token && verifyToken(token)) {
+      const decodedToken = decodeToken(token);
+      const isAdmin = decodeTokenIsAdmin(token);
+
+      dispatch(authLoginSuccess(decodedToken, isAdmin));
+      dispatch(authRequestSuccess('Succesfully logged in'));
+    } else {
       dispatch(authLoginFail());
       dispatch(authRequestFail('No valid token found'));
-    } else {
-      jwt.verify(token, secret, (err, decoded: any) => {
-        if (err) {
-          Cookie.remove('googleAuthToken');
-          dispatch(authLoginFail());
-          dispatch(authRequestFail('Token is no longer valid'));
-        } else {
-          const { email, name, googleId, photo } = decoded.user;
-          dispatch(
-            authLoginSuccess(
-              { email, name, googleId, photo },
-              decoded.user.admin
-            )
-          );
-          dispatch(authRequestSuccess('Succesfully logged in'));
-        }
-      });
+      Cookie.remove('googleAuthToken');
     }
   };
 };
