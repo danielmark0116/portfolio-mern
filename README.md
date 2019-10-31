@@ -39,7 +39,6 @@ mongoDG= connection string to mongodb Atlas - needed for production mode, in dev
 Also, create another .env file inside client folder
 
 ```
-REACT_APP_JWT_SECRET=the same secret as in .env in Server dir
 REACT_APP_GOOGLE_CLIENT_ID=the same client as in .env in server dir
 REACT_APP_MODE=development | production - the only difference here is ommiting the devtools in production mode
 ```
