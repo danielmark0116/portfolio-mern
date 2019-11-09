@@ -16,16 +16,25 @@ exports.loginUser = async (req, res) => {
     if (!user) {
       const newUser = new User(req.body);
 
-      newUser.save().then(user => {
-        const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-          expiresIn: 60 * tokenValidMinutes
-        });
+      newUser
+        .save()
+        .then(user => {
+          const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+            expiresIn: 60 * tokenValidMinutes
+          });
 
-        res.json({
-          user,
-          token
+          res.json({
+            user,
+            token
+          });
+        })
+        .catch(e => {
+          res.status(500).json({
+            error: true,
+            success: false,
+            errorMsg: e.message
+          });
         });
-      });
     } else {
       const token = jwt.sign({ user }, process.env.JWT_SECRET, {
         expiresIn: 60 * tokenValidMinutes
