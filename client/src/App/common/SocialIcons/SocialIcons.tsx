@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import SocialIcon from '../SocialIcon/SocialIcon';
+import SocialIcon from "../SocialIcon/SocialIcon";
 
-import { stateToProps } from './SocialIconsContainer';
+import { stateToProps } from "./SocialIconsContainer";
 
-import { fadeIn as animation } from '../../animations/fades';
+import { fadeIn as animation } from "../../animations/fades";
 
-import style from '../../styles/main.module.scss';
+import style from "../../styles/main.module.scss";
 
 interface IProps {
   animate?: Boolean;
@@ -31,17 +31,17 @@ export default function SocialIcons(props: Props) {
       <SocialIcon
         icon="github"
         index={1}
-        action={() => window.open(links.githubLink, '_blank')}
+        action={() => window.open(links.githubLink, "_blank")}
       />
-      {/* <SocialIcon
+      <SocialIcon
         icon="linkedin"
         index={2}
-        action={() => window.open(links.linkedInLink, '_blank')}
-      /> */}
+        action={() => window.open(links.linkedInLink, "_blank")}
+      />
       <SocialIcon
         icon="instagram"
         index={3}
-        action={() => window.open(links.instagramLink, '_blank')}
+        action={() => window.open(links.instagramLink, "_blank")}
       />
     </div>
   );
