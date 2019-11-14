@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-import Subtitle from '../../../common/Subtitle/Subtitle';
-import Text from '../../../common/Text/Text';
-import Link from '../../../common/Link/Link';
+import Subtitle from "../../../common/Subtitle/Subtitle";
+import Text from "../../../common/Text/Text";
+import Link from "../../../common/Link/Link";
 
-import { stateToProps } from './ContactContainer';
+import { stateToProps } from "./ContactContainer";
 
 type Props = stateToProps;
 
@@ -24,11 +24,11 @@ const Contact = (props: Props) => {
         </a>
       </Link>
 
-      {/* <Link size="xlarge" color="blue">
+      <Link size="xlarge" color="blue">
         <a href={links.linkedInLink} target="_blank">
           LinkedIN
         </a>
-      </Link> */}
+      </Link>
 
       <Link size="xlarge" color="purple">
         <a href={links.instagramLink} target="_blank">
