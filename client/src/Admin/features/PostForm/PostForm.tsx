@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import { stateToProps, dispatchToProps } from './PostFormContainer';
-import { Redirect } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { stateToProps, dispatchToProps } from "./PostFormContainer";
+import { Redirect } from "react-router-dom";
 
-import Title from '../../common/Title/Title';
-import Subtitle from '../../common/Subtitle/Subtitle';
-import Form from '../../common/Form/Form';
-import FileInput from '../../common/FileInput/FileInput';
-import Switch from '../../common/Switch/Switch';
+import Title from "../../common/Title/Title";
+import Subtitle from "../../common/Subtitle/Subtitle";
+import Form from "../../common/Form/Form";
+import FileInput from "../../common/FileInput/FileInput";
+import Switch from "../../common/Switch/Switch";
 
-import { parseFormData } from '../../../utils/parseFormData';
-import { isAnyInputEmpty } from '../../../utils/emptyFormValidate';
-import Loader from '../../common/Loader/Loader';
+import { parseFormData } from "../../../utils/parseFormData";
+import { isAnyInputEmpty } from "../../../utils/emptyFormValidate";
+import Loader from "../../common/Loader/Loader";
 
 type Props = stateToProps & dispatchToProps;
 
@@ -26,7 +26,7 @@ export default class ProjectForm extends Component<Props, IState> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      pageTitle: this.props.edit ? 'Edit' : 'Add new post',
+      pageTitle: this.props.edit ? "Edit" : "Add new post",
       file: null,
       withPic: this.props.picDisable ? false : this.props.edit ? false : true,
       redirect: false,
@@ -57,7 +57,7 @@ export default class ProjectForm extends Component<Props, IState> {
   handleCancelRedirect = () => this.setState({ redirect: true });
 
   formAlert = () => {
-    alert('Invalid form. Double check it');
+    alert("Invalid form. Double check it");
   };
 
   handleSubmit = (input: any) => {
@@ -69,7 +69,7 @@ export default class ProjectForm extends Component<Props, IState> {
     if ((!edit || withPic) && !picDisable) {
       if (file) {
         const formData = parseFormData(input);
-        formData.set('pic', file[0]);
+        formData.set("pic", file[0]);
 
         withPic &&
           edit &&
@@ -100,7 +100,7 @@ export default class ProjectForm extends Component<Props, IState> {
     return (
       <Fragment>
         <Subtitle>{pageTitle}</Subtitle>
-        {edit && <Title>{singlePost.title || ''}</Title>}
+        {edit && <Title>{singlePost.title || ""}</Title>}
         <br />
         {edit && !picDisable && (
           <Switch
@@ -118,21 +118,21 @@ export default class ProjectForm extends Component<Props, IState> {
           spaced={true}
           inputs={[
             {
-              fieldName: 'title',
-              label: 'Title',
-              initValue: edit ? singlePost.title || '' : '',
+              fieldName: "title",
+              label: "Title",
+              initValue: edit ? singlePost.title || "" : "",
               extended: false
             },
             {
-              fieldName: 'author',
-              label: 'Author',
-              initValue: edit ? singlePost.author || '' : '',
+              fieldName: "author",
+              label: "Author",
+              initValue: edit ? singlePost.author || "" : "",
               extended: false
             },
             {
-              fieldName: 'content',
-              label: 'Post text',
-              initValue: edit ? singlePost.content || '' : '',
+              fieldName: "content",
+              label: "Post text",
+              initValue: edit ? singlePost.content || "" : "",
               extended: true
             }
           ]}

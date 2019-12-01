@@ -1,8 +1,8 @@
-const Project = require('../model/project.model');
+const Project = require("../model/project.model");
 
 exports.getProjects = async (req, res) => {
   try {
-    let response = await Project.find().sort({ order: 'descending' });
+    let response = await Project.find().sort({ order: "descending" });
 
     res.json({
       response
@@ -19,7 +19,7 @@ exports.getProjects = async (req, res) => {
 exports.getPublishedProjects = async (req, res) => {
   try {
     let response = await Project.find({ published: true }).sort({
-      order: 'descending'
+      order: "descending"
     });
 
     res.json({
@@ -58,16 +58,16 @@ exports.postProject = async (req, res) => {
     const fileSizeInMb = req.file.buffer.byteLength * 0.000001;
     const fileType = req.file.mimetype;
 
-    if (fileSizeInMb > 10 || !['image/jpeg', 'image/png'].includes(fileType)) {
+    if (fileSizeInMb > 10 || !["image/jpeg", "image/png"].includes(fileType)) {
       res.status(500).json({
         success: false,
         error: true,
-        errorMsg: 'File too large or invalid filetype'
+        errorMsg: "File too large or invalid filetype"
       });
     } else {
-      newProject.pic = req.file.buffer.toString('base64');
-      newProject.tags = req.body.tags.split(',');
-      newProject.technologies = req.body.technologies.split(',');
+      newProject.pic = req.file.buffer.toString("base64");
+      newProject.tags = req.body.tags.split(",");
+      newProject.technologies = req.body.technologies.split(",");
       newProject.picType = fileType;
       newProject.order = documentsNumber + 1;
 
@@ -93,20 +93,20 @@ exports.putProjectWithPic = async (req, res) => {
     const fileSizeInMb = req.file.buffer.byteLength * 0.000001;
     const fileType = req.file.mimetype;
 
-    if (fileSizeInMb > 10 || !['image/jpeg', 'image/png'].includes(fileType)) {
+    if (fileSizeInMb > 10 || !["image/jpeg", "image/png"].includes(fileType)) {
       res.status(500).json({
         success: false,
         error: true,
-        errorMsg: 'File too large or invalid filetype'
+        errorMsg: "File too large or invalid filetype"
       });
     } else {
       let editedProject = await Project.findOneAndUpdate(
         { _id: projectId },
         {
           ...req.body,
-          pic: req.file.buffer.toString('base64'),
-          tags: req.body.tags.split(','),
-          technologies: req.body.technologies.split(','),
+          pic: req.file.buffer.toString("base64"),
+          tags: req.body.tags.split(","),
+          technologies: req.body.technologies.split(","),
           picType: fileType
         },
         { new: true }
@@ -133,8 +133,8 @@ exports.putProject = async (req, res) => {
       { _id: projectId },
       {
         ...req.body,
-        tags: req.body.tags.split(','),
-        technologies: req.body.technologies.split(',')
+        tags: req.body.tags.split(","),
+        technologies: req.body.technologies.split(",")
       },
       { new: true }
     );
@@ -203,7 +203,7 @@ exports.deleteProject = async (req, res) => {
     await Project.findOneAndRemove({ _id: projectId });
 
     res.json({
-      response: 'Project removed from database'
+      response: "Project removed from database"
     });
   } catch (err) {
     res.status(500).json({
